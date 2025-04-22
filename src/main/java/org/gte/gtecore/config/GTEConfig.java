@@ -1,11 +1,13 @@
 package org.gte.gtecore.config;
 
+import org.gte.gtecore.GTECore;
+
 import com.gregtechceu.gtceu.config.ConfigHolder;
+
 import dev.toma.configuration.Configuration;
 import dev.toma.configuration.config.Config;
 import dev.toma.configuration.config.Configurable;
 import dev.toma.configuration.config.format.ConfigFormats;
-import org.gte.gtecore.GTECore;
 
 @Config(id = GTECore.MOD_ID)
 public class GTEConfig {
@@ -31,10 +33,28 @@ public class GTEConfig {
             INSTANCE = Configuration.registerConfig(GTEConfig.class, ConfigFormats.yaml()).getConfigInstance();
         }
         ConfigHolder.init();
+
+        int difficulty = getDifficulty();
+
+        int boilerFactor = 8 >> difficulty;
+
+        ConfigHolder.INSTANCE.gameplay.hazardsEnabled = false;
+        ConfigHolder.INSTANCE.gameplay.universalHazards = false;
+        ConfigHolder.INSTANCE.gameplay.environmentalHazards = false;
+        ConfigHolder.INSTANCE.gameplay.environmentalHazardDecayRate = 0.001f;
+
+        ConfigHolder.INSTANCE.dev.debug = GTEConfig.INSTANCE.dev;
     }
 
     @Configurable
-    @Configurable.Comment("Optional: Simple, Normal, Expert")
+    @Configurable.Comment("是否关闭飞行惯性")
+    public boolean disableDrift = true;
+    @Configurable
+    @Configurable.Comment("旅行权杖最小CD")
+    @Configurable.Range(min = 1)
+    public int travelStaffCD = 2;
+    @Configurable
+    @Configurable.Comment("难度: Simple, Normal, Expert")
     public String gameDifficulty = "Normal";
     @Configurable
     @Configurable.Comment("Prevent cheating")
@@ -68,11 +88,6 @@ public class GTEConfig {
     public int eioFluidRate = 16;
     @Configurable
     public String[] breakBlocksBlackList = { "ae2:cable_bus" };
-    @Configurable
-    public boolean enableAnimalsAreAfraidToEatTheirMeat = true;
-    @Configurable
-    @Configurable.Range(min = 1, max = 64)
-    public int enableAnimalsAreAfraidToEatTheirMeatRange = 12;
 
     @Configurable
     @Configurable.Comment("Check for conflicts between recipes")

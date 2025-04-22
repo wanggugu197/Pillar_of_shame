@@ -1,14 +1,39 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "org.gtecore.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "package": "org.gte.gtecore.mixin",
   "refmap": "gtecore.refmap.json",
-  "mixins": [
-  ],
+  "compatibilityLevel": "JAVA_17",
   "client": [
+    "ae2.client.BuiltInModelHooksAccessor",
+    "ae2.gui.PatternProviderScreenMixin",
+    "ae2.gui.ProcessingEncodingPanelMixin",
+    "ae2.gui.SettingToggleButtonMixin",
+    "mc.MinecraftMixin"
+  ],
+  "mixins": [
+    "ae2.BasicCellInventoryMixin",
+    "ae2.CraftingCpuLogicMixin",
+    "ae2.ExecutingCraftingJobAccessor",
+    "ae2.FacadeCreativeTabMixin",
+    "ae2.PatternProviderLogicMixin",
+    "ae2.SettingsMixin",
+    "ae2.TooltipsMixin",
+    "ae2.gui.PatternEncodingTermMenuMixin",
+    "ae2.gui.PatternProviderMenuMixin",
+    "ae2.gui.StyleManagerMixin",
+    "emi.EmiPersistentDataMixin",
+    "ftbu.FTBUltiminePlayerDataMixin",
+    "gtm.api.recipe.FluidIngredientFluidValueAccessor",
+    "gtm.api.recipe.GTRecipeTypeAccessor",
+    "gtm.chemical.MaterialPropertiesAccessor",
+    "gtm.registry.GTRecipeTypesMixin",
+    "lowdraglib.AsyncThreadDataMixin",
+    "mc.IngredientTagValueAccessor",
+    "patchouli.BookContentResourceListenerLoaderAccessor"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 1,
+    "maxShiftBy": 5
   }
 }
