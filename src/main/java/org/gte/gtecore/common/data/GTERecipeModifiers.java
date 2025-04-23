@@ -1,5 +1,6 @@
 package org.gte.gtecore.common.data;
 
+import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 import org.gte.gtecore.api.capability.recipe.ManaRecipeCapability;
 import org.gte.gtecore.api.machine.feature.IOverclockConfigMachine;
 import org.gte.gtecore.api.machine.feature.IPowerAmplifierMachine;
@@ -44,7 +45,7 @@ public interface GTERecipeModifiers {
 
     GTERecipeModifier GCYM_OVERCLOCKING = new GTERecipeModifierList((machine, recipe) -> overclocking(machine, hatchParallel(machine, recipe), false, false, 0.8, 0.6));
 
-    Set<GTERecipeModifier> TRY_AGAIN = Set.of(PARALLELIZABLE_OVERCLOCK, PARALLELIZABLE_PERFECT_OVERCLOCK, GCYM_OVERCLOCKING);
+    Set<RecipeModifier> TRY_AGAIN = Set.of(PARALLELIZABLE_OVERCLOCK, PARALLELIZABLE_PERFECT_OVERCLOCK, GCYM_OVERCLOCKING);
 
     GTERecipeModifier GENERATOR_OVERCLOCKING = GTERecipeModifiers::generatorOverclocking;
     GTERecipeModifier PERFECT_OVERCLOCKING = GTERecipeModifiers::perfectOverclocking;
@@ -132,7 +133,12 @@ public interface GTERecipeModifiers {
         if (machine instanceof ICoilMachine coilMachine && machine instanceof IOverclockMachine overclockMachine) {
             int temperature = coilMachine.getCoilType().getCoilTemperature() + (100 * Math.max(0, ((WorkableElectricMultiblockMachine) coilMachine).getTier() - GTValues.MV));
             int recipeTemp = recipe.data.getInt("ebf_temp");
-            if (recipeTemp > temperature) return null;
+            if (recipeTemp > temperature) {
+                if (((WorkableElectricMultiblockMachine) coilMachine).getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic) {
+                    enhancedRecipeLogic.gTECore$setIdleReason(IdleReason.INSUFFICIENT_TEMPERATURE.reason());
+                }
+                return null;
+            }
             long recipeVoltage = (long) (RecipeHelper.getInputEUt(recipe) * OverclockingLogic.getCoilEUtDiscount(recipeTemp, temperature));
             int duration = recipe.duration;
             if (machine instanceof IUpgradeMachine upgradeMachine) {

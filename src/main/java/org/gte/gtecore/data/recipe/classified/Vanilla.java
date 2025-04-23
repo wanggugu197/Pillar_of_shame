@@ -3,6 +3,8 @@ package org.gte.gtecore.data.recipe.classified;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.common.data.GTEBlocks;
 import org.gte.gtecore.common.data.GTEItems;
+import org.gte.gtecore.common.data.machines.MultiBlockD;
+import org.gte.gtecore.common.data.machines.MultiBlockG;
 import org.gte.gtecore.utils.RegistriesUtils;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -13,6 +15,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -56,26 +59,27 @@ interface Vanilla {
                     "BCB",
                     "DBD",
                     'A', new MaterialEntry(TagPrefix.screw, GTMaterials.WroughtIron), 'B', new ItemStack(Items.LEATHER.asItem()), 'C', RegistriesUtils.getItemStack("gtceu:wood_crate"), 'D', new ItemStack(Items.STRING.asItem()));
-            /*
-             * VanillaRecipeHelper.addShapedRecipe(provider, true, GTECore.id("automatic_chisel"),
-             * MultiBlockG.AUTOMATIC_CHISEL.asStack(),
-             * "ABA",
-             * "CDC",
-             * "EFE",
-             * 'B', RegistriesUtils.getItemStack("chisel:chisel"), 'F', new MaterialEntry(TagPrefix.plateDouble,
-             * GTMaterials.SteelMagnetic), 'D', GTItems.ROBOT_ARM_LV.asStack(), 'C',
-             * GTItems.CONVEYOR_MODULE_LV.asStack(), 'E', new MaterialEntry(TagPrefix.plate, GTMaterials.Steel), 'A',
-             * CustomTags.LV_CIRCUITS);
-             */
+
+            VanillaRecipeHelper.addShapedRecipe(provider, true, GTECore.id("automatic_chisel"),
+                    MultiBlockG.AUTOMATIC_CHISEL.asStack(),
+                    "ABA",
+                    "CDC",
+                    "EFE",
+                    'B', RegistriesUtils.getItemStack("chisel:chisel"), 'F', new MaterialEntry(TagPrefix.plateDouble,
+                            GTMaterials.SteelMagnetic),
+                    'D', GTItems.ROBOT_ARM_LV.asStack(), 'C',
+                    GTItems.CONVEYOR_MODULE_LV.asStack(), 'E', new MaterialEntry(TagPrefix.plate, GTMaterials.Steel), 'A',
+                    CustomTags.LV_CIRCUITS);
+
         }
         VanillaRecipeHelper.addSmeltingRecipe(provider, GTECore.id("raw_aluminum"), GTEItems.RAW_ALUMINUM.asStack(), ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Aluminium), 0);
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("pattern_modifier_pro"), GTEItems.PATTERN_MODIFIER_PRO.asStack(), RegistriesUtils.getItemStack("expatternprovider:pattern_modifier"));
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("item_storage_cell_64m_2"), GTEItems.ITEM_STORAGE_CELL_64M.asStack(), new ItemStack(AEItems.ITEM_CELL_HOUSING.asItem()), GTEItems.CELL_COMPONENT_64M.asItem());
-        // VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("suprachronal_assembly_line_module"),
-        // MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE_MODULE.asStack(), MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE.getItem());
+        VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("suprachronal_assembly_line_module"),
+                MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE_MODULE.asStack(), MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE.getItem());
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("fluid_storage_cell_1m"), GTEItems.FLUID_STORAGE_CELL_1M.asStack(), new ItemStack(AEItems.FLUID_CELL_HOUSING.asItem()), GTEItems.CELL_COMPONENT_1M.asItem());
-        // VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("suprachronal_assembly_line"),
-        // MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE.asStack(), MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE_MODULE.getItem());
+        VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("suprachronal_assembly_line"),
+                MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE.asStack(), MultiBlockD.SUPRACHRONAL_ASSEMBLY_LINE_MODULE.getItem());
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("item_storage_cell_256m"), GTEItems.ITEM_STORAGE_CELL_256M.asStack(), new ItemStack(AEItems.ITEM_CELL_HOUSING.asItem()), GTEItems.CELL_COMPONENT_256M.asItem());
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("crafting_storage_4m"), GTEBlocks.CRAFTING_STORAGE_4M.asStack(), new ItemStack(AEBlocks.CRAFTING_UNIT.block().asItem()), GTEItems.CELL_COMPONENT_4M.asItem());
         VanillaRecipeHelper.addShapelessRecipe(provider, GTECore.id("fluid_infinity_cell"), GTEItems.FLUID_INFINITY_CELL.asStack(), new ItemStack(AEItems.FLUID_CELL_HOUSING.asItem()), GTEItems.INFINITE_CELL_COMPONENT.asItem());

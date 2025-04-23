@@ -1,6 +1,8 @@
 package org.gte.gtecore.api.registries;
 
+import com.gregtechceu.gtceu.api.machine.SimpleGeneratorMachine;
 import org.gte.gtecore.api.recipe.GTERecipeModifier;
+import org.gte.gtecore.api.recipe.GTERecipeType;
 import org.gte.gtecore.api.recipe.JointRecipeType;
 import org.gte.gtecore.common.data.GTERecipeModifiers;
 import org.gte.gtecore.common.machine.multiblock.steam.LargeSteamParallelMultiblockMachine;
@@ -84,13 +86,13 @@ public class MultiblockBuilder extends MultiblockMachineBuilder {
         return (MultiblockBuilder) generator(true);
     }
 
-    public MultiblockBuilder recipe(GTRecipeType recipeType) {
-        if (recipeType instanceof JointRecipeType jointRecipeType) {
+    public MultiblockBuilder recipe(GTRecipeType... recipeType) {
+        if (recipeType[0] instanceof JointRecipeType jointRecipeType) {
             for (GTRecipeType type : jointRecipeType.getTypes()) {
                 recipes.add(type.registryName.getNamespace() + "." + type.registryName.getPath());
             }
-        } else if (!Objects.equals(recipeType.group, "dummy")) recipes.add(recipeType.registryName.getNamespace() + "." + recipeType.registryName.getPath());
-        return (MultiblockBuilder) recipeType(recipeType);
+        } else if (!Objects.equals(recipeType[0].group, "dummy")) recipes.add(recipeType[0].registryName.getNamespace() + "." + recipeType[0].registryName.getPath());
+        return (MultiblockBuilder) recipeTypes(recipeType);
     }
 
     public MultiblockBuilder existingTooltips(String name, int index, Object... args) {

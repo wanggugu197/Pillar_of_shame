@@ -35,6 +35,10 @@ dependencies {
 
     modImplementation("vazkii.patchouli:Patchouli:${project.minecraft_version}-84-FORGE")
 
+    modRuntimeOnly("dev.shadowsoffire:ApothicAttributes:${project.minecraft_version}-1.3.7")
+    modImplementation("dev.shadowsoffire:Placebo:${project.minecraft_version}-8.6.2")
+    modImplementation("dev.shadowsoffire:Apotheosis:${project.minecraft_version}-7.4.7")
+
     modImplementation("dev.shadowsoffire:Placebo:${project.minecraft_version}-8.6.2")
 
     modImplementation("curse.maven:LibX-412525:5207625")
@@ -64,6 +68,8 @@ dependencies {
     modCompileOnly("curse.maven:ftb-quests-forge-289412:6259628")
 
     modCompileOnly("curse.maven:ftb-xmod-compat-889915:6402486")
+
+    modCompileOnly("curse.maven:ftb-essentials-410811:4896152")
 
     modCompileOnly("curse.maven:ftb-ultimine-forge-386134:5363345")
 

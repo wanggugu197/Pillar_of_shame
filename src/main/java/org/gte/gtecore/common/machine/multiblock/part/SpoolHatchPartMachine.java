@@ -1,6 +1,6 @@
 package org.gte.gtecore.common.machine.multiblock.part;
 
-import org.gte.gtecore.api.machine.multiblock.part.ItemHatchPartMachine;
+import org.gte.gtecore.api.machine.part.ItemHatchPartMachine;
 import org.gte.gtecore.common.data.GTEItems;
 
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;

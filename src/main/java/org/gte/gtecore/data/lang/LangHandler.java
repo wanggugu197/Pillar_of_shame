@@ -1,6 +1,8 @@
 package org.gte.gtecore.data.lang;
 
 import org.gte.gtecore.api.machine.trait.TierCasingTrait;
+import org.gte.gtecore.api.playerskill.SkillRegistry;
+import org.gte.gtecore.api.recipe.IdleReason;
 import org.gte.gtecore.api.registries.GTEMachineBuilder;
 import org.gte.gtecore.api.registries.MultiblockBuilder;
 import org.gte.gtecore.client.Tooltips;
@@ -22,8 +24,8 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Arrays;
 import java.util.Map;
 
-import static net.minecraft.ChatFormatting.GOLD;
-import static net.minecraft.ChatFormatting.RESET;
+import static net.minecraft.ChatFormatting.*;
+import static net.minecraft.ChatFormatting.BOLD;
 import static org.gte.gtecore.api.GTEValues.*;
 
 public final class LangHandler {
@@ -31,6 +33,7 @@ public final class LangHandler {
     private static final Map<String, ENCN> LANGS = new Object2ObjectOpenHashMap<>();
 
     private static void addENCN(String key, ENCN encn) {
+        if (LANGS.containsKey(key)) throw new IllegalArgumentException("Duplicate key: " + key);
         LANGS.put(key, encn);
     }
 
@@ -43,14 +46,18 @@ public final class LangHandler {
     }
 
     private static void init() {
-        MaterialsRegisterUtils.LANG.forEach((k, v) -> addENCN("material.gtecore." + k, v));
+        MaterialsRegisterUtils.LANG.forEach((k, v) -> addENCN("material.gtocore." + k, v));
         RecipeTypeRegisterUtils.LANG.forEach((k, v) -> addENCN("gtceu." + k, v));
         GTEBedrockFluids.LANG.forEach((k, v) -> addENCN("gtceu.jei.bedrock_fluid." + k, v));
-        ItemRegisterUtils.LANG.forEach((k, v) -> addCN("item.gtecore." + k, v));
-        BlockRegisterUtils.LANG.forEach((k, v) -> addCN("block.gtecore." + k, v));
+        ItemRegisterUtils.LANG.forEach((k, v) -> addCN("item.gtocore." + k, v));
+        BlockRegisterUtils.LANG.forEach((k, v) -> addCN("block.gtocore." + k, v));
         GTEMachineBuilder.TOOLTIPS_MAP.forEach(LangHandler::addENCN);
         MultiblockBuilder.TOOLTIPS_MAP.forEach(LangHandler::addENCN);
         Tooltips.LANG.forEach(LangHandler::addENCN);
+        for (var reasons : IdleReason.values()) {
+            if (reasons.getEn() == null) continue;
+            addENCN(reasons.getKey(), reasons.getEn(), reasons.getCn());
+        }
 
         addCN("entity.gtecore.task_entity", "任务执行实体");
         addCN("itemGroup.gtecore.block", "GTE | 方块");
@@ -95,8 +102,6 @@ public final class LangHandler {
         addENCN("gtecore.ununlocked", "Ununlocked", "未解锁");
         addENCN("gtecore.build", "Build", "构建");
 
-        addENCN("config.gtecore.option.enableAnimalsAreAfraidToEatTheirMeat", "Enable Animals Are Afraid To Eat Their Meat", "启用动物害怕他们的肉被吃");
-        addENCN("config.gtecore.option.enableAnimalsAreAfraidToEatTheirMeatRange", "Enable Animals Are Afraid To Eat Their Meat's Range", "启用动物害怕他们的肉被吃的范围");
         addENCN("gtecore.patternModifierPro.0", "After setup,shift + right-click template provider to apply", "设置完成后，潜行右击样板供应器以应用");
         addENCN("gtecore.patternModifierPro.1", "Set Item and Fluid Multiplier", "模板乘数：所有物品和流体乘以指定倍数");
         addENCN("gtecore.patternModifierPro.2", "Set Item and Fluid Divider", "模板乘数：所有物品和流体除以指定倍数");
@@ -104,7 +109,6 @@ public final class LangHandler {
         addENCN("gtecore.patternModifierPro.4", "Set Maximum Fluid Amount / Bucket", "最大流体数：所有流体不会超过此桶数");
         addENCN("gtecore.patternModifierPro.5", "Set Application Cycles , Up to 16", "应用次数为：循环上述操作次数，最大为16");
 
-        addENCN("config.gtecore.option.disableDrift", "Whether to turn off flight inertia", "是否关闭飞行惯性");
         addENCN("config.gtecore.option.travelStaffCD", "Travel Scepter Minimal CD", "旅行权杖最小CD");
         addENCN("config.gtecore.option.selfRestraint", "Self Restraint Mode", "自我约束模式");
         addENCN("config.gtecore.option.eioFluidRate", "EIO Fluid Pipe Rate Multiplier", "EIO流体管道速率倍数");
@@ -121,6 +125,8 @@ public final class LangHandler {
         addENCN("config.gtecore.option.dev", "Dev mode", "开发模式");
         addENCN("config.gtecore.option.gameDifficulty", "Game difficulty", "游戏难度");
         addENCN("config.gtecore.option.emiGlobalFavorites", "EMI Global Favorites", "全局 EMI 书签");
+        addENCN("config.gtocore.option.enableAnimalsAreAfraidToEatTheirMeat", "Enable Animals Are Afraid To Eat Their Meat", "启用动物害怕他们的肉被吃");
+        addENCN("config.gtocore.option.animalsAreAfraidToEatTheirMeatRange", "Animals Are Afraid To Eat Their Meat's Range", "动物害怕他们的肉被吃的范围");
 
         addENCN("gtceu.jei.ore_vein.bauxite_vein", "Bauxite Vein", "铝土矿脉");
         addENCN("gtceu.jei.ore_vein.chromite_vein", "Chromite Vein", "铬铁矿脉");
@@ -209,16 +215,19 @@ public final class LangHandler {
         addENCN("gtecore.player_exp_status.experience_next", " for next level", " 升级");
         addENCN("gtecore.player_exp_status.progress", "\n  Progress: ", "\n  升级进度: ");
         addENCN("gtecore.player_exp_status.upgrade_institution", "\n  Enhance Iife Intensity to upgrade", "\n  提升生命强度以升级");
-        addENCN("gtecore.player_exp_status.body_name", "Life Intensity", "生命强度");
-        addENCN("gtecore.player_exp_status.health_name", "Physique", "体格");
-        addENCN("gtecore.player_exp_status.attack_name", "Strength", "肌肉");
+
+        SkillRegistry.getAll().forEach(skill -> addENCN(skill.getNameTranslateKey(), skill.getEnglishName(), skill.getChineseName()));
+
         addENCN("gtecore.player_exp_status.open", "ExperienceSystemOpened", "经验系统已开启");
         addENCN("gtecore.player_exp_status.close", "ExperienceSystemClosed", "经验系统已关闭");
-        addENCN("gtecore.player_exp_status.get_experience", "you got %s point of %s experience", "你获得了%s点%s经验");
 
-        addENCN("gtecore.behaviour.grass_harvest.description", GOLD + "Greatly" + RESET + " increase the probability of wheat seed dropping", GOLD + "极大" + RESET + "地提升小麦种子掉落概率");
-        addENCN("gtecore.behaviour.grass_harvest.description2", "Right click to harvest", "右键以收割");
-        addENCN("gtecore.xaero_waypoint_set", "Ore Vein", "矿脉");
+        addENCN("gtecore.player_exp_status.get_experience", "You got %s point of %s experience", "你获得了%s点%s经验");
+        addENCN("gtecore.player_exp_status.add_level", "Your %s skill has been upgraded to level %s", "你的%s技能升到了%s级");
+        addENCN("gtecore.player_exp_status.sup.error", "The %s level of %s can only use the %s skill upgrade package of %s and " + GOLD + BOLD + "above", "%s级别的%s等级只能使用%s及" + GOLD + BOLD + "以上" + RESET + "等级的%s能力提升包");
+
+        addENCN("gtocore.xaero_waypoint_set", "Ore Vein", "矿脉");
+
+        addENCN("gtecore.teleport.not_safe", "It's not safe now, we can't teleport", "现在不安全，不能传送");
     }
 
     public static void enInitialize(LanguageProvider provider) {

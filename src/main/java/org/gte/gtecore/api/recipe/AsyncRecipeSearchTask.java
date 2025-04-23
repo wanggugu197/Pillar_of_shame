@@ -108,27 +108,25 @@ public final class AsyncRecipeSearchTask {
     }
 
     private static Result searchRecipe(RecipeLogic logic) {
-        if (logic.machine.hasCapabilityProxies()) {
-            Iterator<GTRecipe> iterator = logic.machine.getRecipeType().searchRecipe(logic.machine, recipe -> RecipeRunnerHelper.checkTier(logic.machine, recipe) && RecipeRunnerHelper.matchRecipe(logic.machine, recipe) && RecipeRunnerHelper.matchTickRecipe(logic.machine, recipe));
-            while (iterator.hasNext()) {
-                GTRecipe recipe = iterator.next();
-                if (recipe == null) continue;
-                GTRecipe modified = modifyRecipe(recipe, logic);
-                if (modified != null) {
-                    return new Result(recipe, modified);
-                }
-                if (logic.lastFailedMatches == null) {
-                    logic.lastFailedMatches = new ArrayList<>();
-                }
-                logic.lastFailedMatches.add(recipe);
+        Iterator<GTRecipe> iterator = logic.machine.getRecipeType().searchRecipe(logic.machine, recipe -> RecipeRunnerHelper.checkTier(logic.machine, recipe) && RecipeRunnerHelper.matchRecipe(logic.machine, recipe) && RecipeRunnerHelper.matchTickRecipe(logic.machine, recipe));
+        while (iterator.hasNext()) {
+            GTRecipe recipe = iterator.next();
+            if (recipe == null) continue;
+            GTRecipe modified = modifyRecipe(recipe, logic);
+            if (modified != null) {
+                return new Result(recipe, modified);
             }
+            if (logic.lastFailedMatches == null) {
+                logic.lastFailedMatches = new ArrayList<>();
+            }
+            logic.lastFailedMatches.add(recipe);
         }
         return new Result(null, null);
     }
 
     private static GTRecipe modifyRecipe(GTRecipe recipe, RecipeLogic logic) {
         GTRecipe modified = logic.machine.fullModifyRecipe(recipe.copy());
-        if (RecipeRunnerHelper.check(logic.machine, modified)) {
+        if (modified != null && (modified.parallels > 1 || RecipeRunnerHelper.matchRecipe(logic.machine, modified))) {
             return modified;
         }
         return null;

@@ -1,7 +1,5 @@
 package org.gte.gtecore.common.data;
 
-import appeng.block.crafting.AbstractCraftingUnitBlock;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.registries.GTERegistration;
 import org.gte.gtecore.common.block.*;
@@ -408,6 +406,8 @@ public interface GTEBlocks {
 
     BlockEntry<Block> STAINLESS_EVAPORATION_CASING = createCasingBlock("stainless_evaporation_casing", "不锈钢蒸发外壳", GTECore.id("block/casings/stainless_evaporation_casing"));
 
+    BlockEntry<Block> GAIASTEEL_CASING = createCasingBlock("gaiasteel_casing", "盖亚钢外壳", GTECore.id("block/casings/gaiasteel_casing"));
+    BlockEntry<Block> ELEMENTIUM_CASING = createCasingBlock("elementium_casing", "源质钢外壳", GTECore.id("block/casings/elementium_casing"));
     BlockEntry<Block> MANASTEEL_CASING = createCasingBlock("manasteel_casing", "魔力钢外壳", GTECore.id("block/casings/manasteel_casing"));
     BlockEntry<Block> ORIGINAL_BRONZE_CASING = createCasingBlock("original_bronze_casing", "原始青铜外壳", GTECore.id("block/casings/original_bronze_casing"));
 }

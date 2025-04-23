@@ -4,6 +4,7 @@
   "package": "org.gte.gtecore.mixin",
   "refmap": "gtecore.refmap.json",
   "compatibilityLevel": "JAVA_17",
+  "plugin": "org.gte.gtecore.config.MixinConfigPlugin",
   "client": [
     "ae2.client.BuiltInModelHooksAccessor",
     "ae2.gui.PatternProviderScreenMixin",
@@ -22,15 +23,20 @@
     "ae2.gui.PatternEncodingTermMenuMixin",
     "ae2.gui.PatternProviderMenuMixin",
     "ae2.gui.StyleManagerMixin",
+    "botania.ContributorListMixin",
     "emi.EmiPersistentDataMixin",
     "ftbu.FTBUltiminePlayerDataMixin",
+    "gtm.CommonProxyMixin",
+    "gtm.api.AddonFinderMixin",
     "gtm.api.recipe.FluidIngredientFluidValueAccessor",
     "gtm.api.recipe.GTRecipeTypeAccessor",
     "gtm.chemical.MaterialPropertiesAccessor",
     "gtm.registry.GTRecipeTypesMixin",
     "lowdraglib.AsyncThreadDataMixin",
     "mc.IngredientTagValueAccessor",
-    "patchouli.BookContentResourceListenerLoaderAccessor"
+    "modernfix.ClassInfoManagerMixin",
+    "patchouli.BookContentResourceListenerLoaderAccessor",
+    "travelanchors.EventListenerMixin"
   ],
   "injectors": {
     "defaultRequire": 1,

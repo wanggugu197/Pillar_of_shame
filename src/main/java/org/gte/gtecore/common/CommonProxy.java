@@ -1,37 +1,42 @@
 package org.gte.gtecore.common;
 
-import appeng.api.networking.pathing.ChannelMode;
-import appeng.api.storage.StorageCells;
-import appeng.core.AEConfig;
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.common.data.*;
-import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
-import com.hepdd.gtmthings.common.item.AdvancedTerminalBehavior;
-import earth.terrarium.adastra.api.events.AdAstraEvents;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.ModList;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.config.Configurator;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.entity.IEnhancedPlayer;
 import org.gte.gtecore.common.data.*;
+import org.gte.gtecore.common.forge.ExperienceEventHandler;
+import org.gte.gtecore.common.forge.FoodHurtAnimalEventHandler;
+import org.gte.gtecore.common.forge.ForgeCommonEvent;
 import org.gte.gtecore.config.GTEConfig;
+import org.gte.gtecore.data.Data;
+import org.gte.gtecore.integration.ae2.InfinityCellGuiHandler;
+import org.gte.gtecore.integration.ae2.storage.InfinityCellHandler;
+import org.gte.gtecore.integration.ftbquests.EMIRecipeModHelper;
+import org.gte.gtecore.utils.register.ItemRegisterUtils;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.DimensionMarker;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.common.unification.material.MaterialRegistryManager;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.gte.gtecore.integration.ae2.InfinityCellGuiHandler;
-import org.gte.gtecore.integration.ae2.storage.InfinityCellHandler;
-import org.gte.gtecore.utils.register.ItemRegisterUtils;
+
+import appeng.api.networking.pathing.ChannelMode;
+import appeng.api.storage.StorageCells;
+import appeng.core.AEConfig;
+import com.hepdd.gtmthings.common.item.AdvancedTerminalBehavior;
+import earth.terrarium.adastra.api.events.AdAstraEvents;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import static org.gte.gtecore.api.registries.GTERegistration.REGISTRATE;
 

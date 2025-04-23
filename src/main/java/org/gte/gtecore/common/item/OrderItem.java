@@ -96,7 +96,7 @@ public final class OrderItem implements IItemUIFactory, IFancyUIProvider, ICusto
 
     @Override
     public Component getTitle() {
-        return Component.translatable("item.gtecore.order.config");
+        return Component.translatable("item.gto=ecore.order.config");
     }
 
     public void attachSideTabs(TabsWidget sideTabs) {

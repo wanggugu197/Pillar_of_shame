@@ -1,7 +1,9 @@
 package org.gte.gtecore.api.recipe;
 
+import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.capability.recipe.ManaRecipeCapability;
+import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.gte.gtecore.mixin.gtm.api.recipe.GTRecipeTypeAccessor;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -60,6 +62,9 @@ public class GTERecipeType extends GTRecipeType {
 
     @Override
     public @NotNull Iterator<GTRecipe> searchRecipe(IRecipeCapabilityHolder holder, Predicate<GTRecipe> canHandle) {
+        if (holder instanceof IRecipeLogicMachine recipeLogicMachine && recipeLogicMachine.getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic) {
+            enhancedRecipeLogic.gTECore$setIdleReason(IdleReason.NO_MATCH.reason());
+        }
         if (!holder.hasCapabilityProxies()) return Collections.emptyIterator();
         return new SearchRecipeIterator(holder, this, canHandle);
     }

@@ -1,6 +1,6 @@
 package org.gte.gtecore.common.data;
 
-import org.gte.gtecore.common.data.material.GTMaterialExtend;
+import org.gte.gtecore.common.data.material.*;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -8,7 +8,6 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import java.util.Map;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.GTValues.LV;
 
 public final class GTEMaterials {
 
@@ -981,11 +980,11 @@ public final class GTEMaterials {
 
     public static void init() {
         GTMaterialExtend.init();
-        // MagicMaterial.init();
-        // MaterialA.init();
-        // MaterialB.init();
-        // MaterialC.init();
-        // MaterialIgnored.init();
+        MagicMaterial.init();
+        MaterialA.init();
+        MaterialB.init();
+        MaterialC.init();
+        MaterialIgnored.init();
 
         MATERIAL_VOLTAGE = Map.of(
                 GTMaterials.Gold, VA[LV],

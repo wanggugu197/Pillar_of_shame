@@ -1,15 +1,14 @@
 package org.gte.gtecore.api.recipe;
 
+import com.gregtechceu.gtceu.api.capability.recipe.*;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.machine.feature.IRecipeSearchMachine;
 import org.gte.gtecore.api.machine.feature.multiblock.IMEOutputMachine;
+import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.gte.gtecore.common.data.GTERecipeTypes;
 import org.gte.gtecore.config.GTEConfig;
 
-import com.gregtechceu.gtceu.api.capability.recipe.IO;
-import com.gregtechceu.gtceu.api.capability.recipe.IRecipeCapabilityHolder;
-import com.gregtechceu.gtceu.api.capability.recipe.IRecipeHandler;
-import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
 import com.gregtechceu.gtceu.api.machine.SimpleTieredMachine;
 import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
@@ -34,13 +33,24 @@ public interface RecipeRunnerHelper {
 
     GTRecipe EMPTY_RECIPE = new GTRecipe(GTERecipeTypes.DUMMY_RECIPES, GTECore.id("empty"), Map.of(), Map.of(), Map.of(), Map.of(), Map.of(), Map.of(), Map.of(), Map.of(), List.of(), List.of(), new CompoundTag(), 0, GTERecipeTypes.DUMMY_RECIPES.getCategory());
 
+    private static void setIdleReason(IRecipeLogicMachine machine, IdleReason reason) {
+        if (machine.getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic) {
+            enhancedRecipeLogic.gTECore$setIdleReason(reason.reason());
+        }
+    }
+
     static boolean checkTier(IRecipeLogicMachine machine, GTRecipe recipe) {
         int tier = RecipeHelper.getRecipeEUtTier(recipe);
         if (tier > 0) {
+            boolean success = false;
             if (machine instanceof WorkableElectricMultiblockMachine electricMultiblockMachine) {
-                return tier <= electricMultiblockMachine.getOverclockTier();
+                success = tier <= electricMultiblockMachine.getOverclockTier();
             } else if (machine instanceof SimpleTieredMachine tieredMachine) {
-                return tier <= tieredMachine.getOverclockTier();
+                success = tier <= tieredMachine.getOverclockTier();
+            }
+            if (!success) {
+                setIdleReason(machine, IdleReason.VOLTAGE_TIER_NOT_SATISFIES);
+                return false;
             }
         }
         return true;
@@ -53,7 +63,12 @@ public interface RecipeRunnerHelper {
     }
 
     static boolean checkConditions(IRecipeLogicMachine holder, GTRecipe recipe) {
-        return RecipeHelper.checkConditions(recipe, holder.getRecipeLogic()).isSuccess();
+        var conditionResult = RecipeHelper.checkConditions(recipe, holder.getRecipeLogic());
+        if (conditionResult.isSuccess()) return true;
+        if (holder.getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic) {
+            enhancedRecipeLogic.gTECore$setIdleReason(conditionResult.reason());
+        }
+        return false;
     }
 
     static boolean matchRecipe(IRecipeCapabilityHolder holder, GTRecipe recipe) {
@@ -72,7 +87,13 @@ public interface RecipeRunnerHelper {
 
     static boolean matchRecipeInput(IRecipeCapabilityHolder holder, GTRecipe recipe) {
         if (recipe.inputs.isEmpty()) return true;
-        return RecipeHelper.handleRecipe(holder, recipe, IO.IN, recipe.inputs, Collections.emptyMap(), false, true).isSuccess();
+        if (RecipeHelper.handleRecipe(holder, recipe, IO.IN, recipe.inputs, Collections.emptyMap(), false, true).isSuccess()) {
+            return true;
+        }
+        if (holder instanceof IRecipeLogicMachine machine) {
+            setIdleReason(machine, IdleReason.NO_MATCH);
+        }
+        return false;
     }
 
     static boolean matchRecipeOutput(IRecipeCapabilityHolder holder, GTRecipe recipe) {
@@ -80,12 +101,26 @@ public interface RecipeRunnerHelper {
         if (holder instanceof IMEOutputMachine machine && machine.gTECore$DualMEOutput(recipe)) {
             return true;
         }
-        return RecipeHelper.handleRecipe(holder, recipe, IO.OUT, recipe.outputs, Collections.emptyMap(), false, true).isSuccess();
+        if (RecipeHelper.handleRecipe(holder, recipe, IO.OUT, recipe.outputs, Collections.emptyMap(), false, true).isSuccess()) {
+            return true;
+        }
+        if (holder instanceof IRecipeLogicMachine machine) {
+            setIdleReason(machine, IdleReason.OUTPUT_FULL);
+        }
+        return false;
     }
 
     static boolean matchRecipeTickInput(IRecipeCapabilityHolder holder, GTRecipe recipe) {
         for (Map.Entry<RecipeCapability<?>, List<Content>> entry : recipe.tickInputs.entrySet()) {
-            if (handleTickRecipe(holder, IO.IN, recipe, entry.getValue(), entry.getKey(), true)) {
+            var cap = entry.getKey();
+            if (handleTickRecipe(holder, IO.IN, recipe, entry.getValue(), cap, true)) {
+                if (holder instanceof IRecipeLogicMachine machine) {
+                    if (cap == EURecipeCapability.CAP) {
+                        setIdleReason(machine, IdleReason.NO_EU);
+                    } else if (cap == CWURecipeCapability.CAP) {
+                        setIdleReason(machine, IdleReason.NO_CWU);
+                    }
+                }
                 return false;
             }
         }
@@ -114,7 +149,13 @@ public interface RecipeRunnerHelper {
     }
 
     static boolean handleRecipeIO(IRecipeCapabilityHolder holder, GTRecipe recipe, IO io, Map<RecipeCapability<?>, Object2IntMap<?>> chanceCaches) {
-        return RecipeHelper.handleRecipe(holder, recipe, io, io == IO.IN ? recipe.inputs : recipe.outputs, chanceCaches, false, false).isSuccess();
+        if (RecipeHelper.handleRecipe(holder, recipe, io, io == IO.IN ? recipe.inputs : recipe.outputs, chanceCaches, false, false).isSuccess()) {
+            return true;
+        }
+        if (io == IO.IN && holder instanceof IRecipeLogicMachine machine) {
+            setIdleReason(machine, IdleReason.INVALID_INPUT);
+        }
+        return false;
     }
 
     /**

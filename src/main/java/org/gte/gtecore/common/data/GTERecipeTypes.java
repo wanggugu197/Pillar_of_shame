@@ -120,7 +120,7 @@ public interface GTERecipeTypes {
             .setMaxIOSize(1, 0, 0, 0)
             .setEUIO(IO.NONE)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.radioactivity", data.getInt("radioactivity")));
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.radioactivity", data.getInt("radioactivity")));
 
     GTERecipeType ARC_GENERATOR_RECIPES = register("arc_generator", "电弧发生器", ELECTRIC)
             .setMaxIOSize(6, 1, 6, 1)
@@ -242,9 +242,9 @@ public interface GTERecipeTypes {
     GTERecipeType NEUTRON_ACTIVATOR_RECIPES = register("neutron_activator", "中子活化", MULTIBLOCK)
             .setMaxIOSize(6, 3, 1, 1)
             .setSound(GTSoundEntries.COOLING)
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.ev_min", data.getInt("ev_min")))
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.ev_max", data.getInt("ev_max")))
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.evt", data.getInt("evt")));
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.ev_min", data.getInt("ev_min")))
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.ev_max", data.getInt("ev_max")))
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.evt", data.getInt("evt")));
 
     GTERecipeType HEAT_EXCHANGER_RECIPES = register("heat_exchanger", "流体热交换", MULTIBLOCK)
             .setMaxIOSize(0, 0, 2, 3)
@@ -269,7 +269,7 @@ public interface GTERecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC)
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.frheat", FormattingUtil.formatNumbers(data.getInt("FRheat"))));
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.frheat", FormattingUtil.formatNumbers(data.getInt("FRheat"))));
 
     GTERecipeType STELLAR_FORGE_RECIPES = register("stellar_forge", "恒星热能熔炼", MULTIBLOCK)
             .setEUIO(IO.IN)
@@ -278,9 +278,9 @@ public interface GTERecipeTypes {
             .setSound(GTSoundEntries.ARC)
             .addDataInfo(data -> {
                 String tierString = switch (data.getInt(STELLAR_CONTAINMENT_TIER)) {
-                    case 3 -> I18n.get("gtocore.tier.ultimate");
-                    case 2 -> I18n.get("gtocore.tier.advanced");
-                    default -> I18n.get("gtocore.tier.base");
+                    case 3 -> I18n.get("gtecore.tier.ultimate");
+                    case 2 -> I18n.get("gtecore.tier.advanced");
+                    default -> I18n.get("gtecore.tier.base");
                 };
                 return LocalizationUtils.format(TierCasingTrait.getTierTranslationKey(STELLAR_CONTAINMENT_TIER), tierString);
             });
@@ -491,13 +491,13 @@ public interface GTERecipeTypes {
             .setSound(GTSoundEntries.COOLING)
             .addDataInfo(data -> {
                 String filterCasing = switch (data.getInt("filter_casing")) {
-                    case 3 -> "T3：" + I18n.get("block.gtocore.law_filter_casing");
+                    case 3 -> "T3：" + I18n.get("block.gtecore.law_filter_casing");
                     case 2 -> "T2：" + I18n.get("block.gtceu.sterilizing_filter_casing");
                     default -> "T1：" + I18n.get("block.gtceu.filter_casing");
                 };
                 return LocalizationUtils.format("gtceu.recipe.cleanroom", filterCasing);
             })
-            .addDataInfo(data -> data.contains("radioactivity") ? LocalizationUtils.format("gtocore.recipe.radioactivity", data.getInt("radioactivity")) : "")
+            .addDataInfo(data -> data.contains("radioactivity") ? LocalizationUtils.format("gtecore.recipe.radioactivity", data.getInt("radioactivity")) : "")
             .onRecipeBuild((b, p) -> b.addData(GLASS_TIER, GTUtil.getFloorTierByVoltage(b.EUt())));
 
     GTERecipeType PCB_FACTORY_RECIPES = register("pcb_factory", "PCB工厂", MULTIBLOCK)
@@ -630,10 +630,10 @@ public interface GTERecipeTypes {
             .addDataInfo(COIL)
             .setUiBuilder(COIL_UI)
             .addDataInfo(data -> switch (data.getInt("module")) {
-                case 0 -> I18n.get("gtocore.machine.need", I18n.get("block.gtocore.nanites_integrated_processing_center"));
-                case 1 -> I18n.get("gtocore.machine.need", I18n.get("block.gtocore.ore_extraction_module"));
-                case 2 -> I18n.get("gtocore.machine.need", I18n.get("block.gtocore.bioengineering_module"));
-                case 3 -> I18n.get("gtocore.machine.need", I18n.get("block.gtocore.polymer_twisting_module"));
+                case 0 -> I18n.get("gtecore.machine.need", I18n.get("block.gtecore.nanites_integrated_processing_center"));
+                case 1 -> I18n.get("gtecore.machine.need", I18n.get("block.gtecore.ore_extraction_module"));
+                case 2 -> I18n.get("gtecore.machine.need", I18n.get("block.gtecore.bioengineering_module"));
+                case 3 -> I18n.get("gtecore.machine.need", I18n.get("block.gtecore.polymer_twisting_module"));
                 default -> "";
             })
             .setMaxTooltips(5)
@@ -643,7 +643,7 @@ public interface GTERecipeTypes {
             .setMaxIOSize(6, 1, 3, 0)
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.nano_forge_tier", FormattingUtil.formatNumbers(data.getInt("nano_forge_tier"))))
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.nano_forge_tier", FormattingUtil.formatNumbers(data.getInt("nano_forge_tier"))))
             .setSound(GTSoundEntries.ARC);
 
     GTERecipeType FUEL_REFINING_RECIPES = register("fuel_refining", "燃料精炼", MULTIBLOCK)
@@ -669,7 +669,7 @@ public interface GTERecipeTypes {
             .setEUIO(IO.IN)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.MACERATOR)
-            .addDataInfo(data -> LocalizationUtils.format("gtocore.recipe.grindball", I18n.get(data.getInt("grindball") == 2 ? "material.gtceu.aluminium" : "material.gtceu.soapstone")));
+            .addDataInfo(data -> LocalizationUtils.format("gtecore.recipe.grindball", I18n.get(data.getInt("grindball") == 2 ? "material.gtceu.aluminium" : "material.gtceu.soapstone")));
 
     GTERecipeType FLOTATING_BENEFICIATION_RECIPES = register("flotating_beneficiation", "浮游选矿", MULTIBLOCK)
             .setMaxIOSize(2, 0, 1, 1)
@@ -847,7 +847,7 @@ public interface GTERecipeTypes {
             .setEUIO(IO.IN)
             .setMaxIOSize(3, 2, 5, 1)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
-            .addDataInfo(data -> data.contains("radioactivity") ? LocalizationUtils.format("gtocore.recipe.radioactivity", data.getInt("radioactivity")) : "")
+            .addDataInfo(data -> data.contains("radioactivity") ? LocalizationUtils.format("gtecore.recipe.radioactivity", data.getInt("radioactivity")) : "")
             .setSound(GTSoundEntries.COOLING);
 
     GTERecipeType BIOCHEMICAL_EXTRACTION_RECIPES = register("biochemical_extraction", "生物提取", MULTIBLOCK)
@@ -867,6 +867,36 @@ public interface GTERecipeTypes {
             .setMaxIOSize(3, 1, 0, 0)
             .setProgressBar(GuiTextures.COMPRESSOR_OVERLAY, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC);
+
+    GTERecipeType PROFESSIONAL_SCANNER_RECIPES = register("professional_scanner", "专业扫描", ELECTRIC)
+            .setMaxIOSize(2, 1, 0, 0)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setSlotOverlay(true, false, GuiTextures.RESEARCH_STATION_OVERLAY)
+            .setSlotOverlay(false, false, GuiTextures.SCANNER_OVERLAY)
+            .setScanner(true)
+            .setMaxTooltips(4)
+            .setSound(GTSoundEntries.SCIENCE);
+
+    GTERecipeType DIRECTIONAL_ANALYSIS_RECIPES = register("directional_analysis", "定向分析", ELECTRIC)
+            .setMaxIOSize(5, 1, 1, 0)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setScanner(true)
+            .setMaxTooltips(4)
+            .setSound(GTSoundEntries.SCIENCE);
+
+    GTERecipeType FURTHER_RESEARCH_RECIPES = register("further_research", "深入研究", ELECTRIC)
+            .setMaxIOSize(12, 1, 1, 0)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setScanner(true)
+            .setMaxTooltips(4)
+            .setSound(GTSoundEntries.SCIENCE);
+
+    GTERecipeType PRODUCTION_DEVELOPMENT_RECIPES = register("production_development", "生产开发", ELECTRIC)
+            .setMaxIOSize(12, 1, 1, 0)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+            .setScanner(true)
+            .setMaxTooltips(4)
+            .setSound(GTSoundEntries.SCIENCE);
 
     // TODO 添加用途
     GTERecipeType PLASMA_CENTRIFUGE_RECIPES = register("plasma_centrifuge", "等离子体离心", MULTIBLOCK)
@@ -925,7 +955,7 @@ public interface GTERecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC);
 
-    GTERecipeType MANA_SIMULATOR_RECIPES = register("mana_simulator", "魔力模拟室", GENERATOR)
+    GTERecipeType MANA_GARDEN_RECIPES = register("mana_garden", "魔力花园", MAGIC)
             .setEUIO(IO.IN)
             .setMANAIO(IO.OUT)
             .setMaxIOSize(2, 2, 2, 2)
@@ -933,10 +963,10 @@ public interface GTERecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.ARC);
 
-    GTERecipeType MANA_SIMULATOR_FUEL = register("mana_simulator_fuel", "魔力模拟室：燃料", GENERATOR)
+    GTERecipeType MANA_GARDEN_FUEL = register("mana_garden_fuel", "魔力花园：燃料", MAGIC)
             .setEUIO(IO.IN)
             .setMANAIO(IO.OUT)
-            .setMaxIOSize(1, 0, 1, 0)
+            .setMaxIOSize(2, 0, 1, 0)
             .setSlotOverlay(false, true, true, GuiTextures.FURNACE_OVERLAY_2)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, LEFT_TO_RIGHT)
             .setMaxTooltips(5)

@@ -48,7 +48,7 @@ public final class GravityCondition extends RecipeCondition {
 
     @Override
     public Component getTooltips() {
-        return Component.translatable("gtocore.condition." + (zero ? "zero_" : "") + "gravity");
+        return Component.translatable("gtecore.condition." + (zero ? "zero_" : "") + "gravity");
     }
 
     @Override

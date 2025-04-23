@@ -2,6 +2,7 @@ package org.gte.gtecore.api.recipe;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.capability.recipe.IRecipeCapabilityHolder;
+import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.category.GTRecipeCategory;
@@ -10,6 +11,7 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import lombok.Getter;
+import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -38,6 +40,9 @@ public final class JointRecipeType extends GTERecipeType {
 
     @Override
     public @NotNull Iterator<GTRecipe> searchRecipe(IRecipeCapabilityHolder holder, Predicate<GTRecipe> canHandle) {
+        if (holder instanceof IRecipeLogicMachine recipeLogicMachine && recipeLogicMachine.getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic) {
+            enhancedRecipeLogic.gTECore$setIdleReason(IdleReason.NO_MATCH.reason());
+        }
         if (!holder.hasCapabilityProxies()) return Collections.emptyIterator();
         return new JointSearchRecipeIterator(holder, this, canHandle);
     }

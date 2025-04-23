@@ -1,5 +1,6 @@
 package org.gte.gtecore.api.machine.trait;
 
+import org.gte.gtecore.api.recipe.IdleReason;
 import org.gte.gtecore.api.recipe.RecipeRunnerHelper;
 
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
@@ -27,6 +28,7 @@ public class CustomRecipeLogic extends RecipeLogic implements IEnhancedRecipeLog
 
     @Override
     public void findAndHandleRecipe() {
+        gTECore$setIdleReason(IdleReason.NO_MATCH.reason());
         lastRecipe = null;
         if (machine.hasCapabilityProxies()) {
             GTRecipe match = recipeSupplier.get();

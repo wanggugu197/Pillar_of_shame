@@ -105,6 +105,12 @@ public interface IEnhancedRecipeLogic {
 
     default void gTECore$setLockRecipe(boolean lockRecipe) {}
 
+    default void gTECore$setIdleReason(Component reason) {}
+
+    default Component gTECore$getIdleReason() {
+        return null;
+    }
+
     static void attachRecipeLockable(ConfiguratorPanel configuratorPanel, RecipeLogic logic) {
         if (logic instanceof IEnhancedRecipeLogic lockableRecipe && lockableRecipe.canLockRecipe()) {
             configuratorPanel.attachConfigurators(new IFancyConfiguratorButton.Toggle(

@@ -1,6 +1,6 @@
 package org.gte.gtecore.common.machine.multiblock.part;
 
-import org.gte.gtecore.api.machine.multiblock.part.AmountConfigurationHatchPartMachine;
+import org.gte.gtecore.api.machine.part.AmountConfigurationHatchPartMachine;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;

@@ -2,7 +2,22 @@ package org.gte.gtecore.common.data;
 
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.GTEValues;
+import org.gte.gtecore.api.machine.SimpleNoEnergyMachine;
+import org.gte.gtecore.api.machine.part.ItemHatchPartMachine;
+import org.gte.gtecore.api.machine.part.GTEPartAbility;
+import org.gte.gtecore.common.machine.multiblock.part.MachineAccessInterfacePartMachine;
+import org.gte.gtecore.client.renderer.machine.BallHatchRenderer;
+import org.gte.gtecore.client.renderer.machine.WindMillTurbineRenderer;
+import org.gte.gtecore.common.data.machines.*;
+import org.gte.gtecore.common.machine.electric.ElectricHeaterMachine;
+import org.gte.gtecore.common.machine.electric.VacuumPumpMachine;
+import org.gte.gtecore.common.machine.generator.LightningRodMachine;
+import org.gte.gtecore.common.machine.generator.WindMillTurbineMachine;
 import org.gte.gtecore.common.machine.multiblock.part.*;
+import org.gte.gtecore.common.machine.multiblock.part.ae.*;
+import org.gte.gtecore.common.machine.multiblock.part.maintenance.*;
+import org.gte.gtecore.common.machine.noenergy.*;
+import org.gte.gtecore.common.machine.steam.SteamVacuumPumpMachine;
 import org.gte.gtecore.config.GTEConfig;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -20,6 +35,7 @@ import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.gregtechceu.gtceu.common.item.TurbineRotorBehaviour;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.DualHatchPartMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.ParallelHatchPartMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 
 import net.minecraft.ChatFormatting;
@@ -32,12 +48,11 @@ import it.unimi.dsi.fastutil.Pair;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.capability.recipe.IO.IN;
 import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.PARALLEL_HATCH;
-import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
+import static org.gte.gtecore.utils.register.MachineRegisterUtils.*;
 
 public interface GTEMachines {
 
     static void init() {
-        /*
         ManaMachine.init();
         GeneratorMultiblock.init();
         ExResearchMachines.init();
@@ -49,7 +64,6 @@ public interface GTEMachines {
         MultiBlockF.init();
         MultiBlockG.init();
         MultiBlockH.init();
-         */
     }
 
     //////////////////////////////////////
@@ -106,25 +120,25 @@ public interface GTEMachines {
     MachineDefinition[] ULV_UNPACKER = registerSimpleMachines("unpacker", "解包机", GTERecipeTypes.UNPACKER_RECIPES, GTMachineUtils.defaultTankSizeFunction, ULV);
     MachineDefinition[] ULV_LOOM = registerSimpleMachines("loom", "织布机", GTERecipeTypes.LOOM_RECIPES, GTMachineUtils.defaultTankSizeFunction, ULV);
 
-    MachineDefinition[] VACUUM_PUMP = registerTieredMachines("vacuum_pump", tier -> "%s真空泵 %s".formatted(GTOValues.VLVHCN[tier], VLVT[tier]), VacuumPumpMachine::new,
+    MachineDefinition[] VACUUM_PUMP = registerTieredMachines("vacuum_pump", tier -> "%s真空泵 %s".formatted(GTEValues.VLVHCN[tier], VLVT[tier]), VacuumPumpMachine::new,
             (tier, builder) -> builder
                     .langValue("%s Vacuum Pump %s".formatted(VLVH[tier], VLVT[tier]))
                     .nonYAxisRotation()
                     .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCEu.id("vacuum_pump"), GTERecipeTypes.VACUUM_PUMP_RECIPES))
                     .alwaysTryModifyRecipe(true)
                     .recipeType(GTERecipeTypes.VACUUM_PUMP_RECIPES)
-                    .workableTieredHullRenderer(GTOCore.id("block/machines/vacuum_pump"))
+                    .workableTieredHullRenderer(GTECore.id("block/machines/vacuum_pump"))
                     .tooltips(Component.translatable("gtecore.recipe.vacuum.tier", tier + 1))
                     .tooltips(GTMachineUtils.workableTiered(tier, V[tier], V[tier] << 6, GTERecipeTypes.VACUUM_PUMP_RECIPES, GTMachineUtils.defaultTankSizeFunction.apply(tier), true))
                     .register(),
             LV, MV, HV);
     MachineDefinition[] LIGHTNING_ROD = registerTieredMachines(
-            "lightning_rod", tier -> "%s避雷针 %s".formatted(GTOValues.VLVHCN[tier], VLVT[tier]),
+            "lightning_rod", tier -> "%s避雷针 %s".formatted(GTEValues.VLVHCN[tier], VLVT[tier]),
             LightningRodMachine::new,
             (tier, builder) -> builder
                     .langValue("%s Lightning Rod %s".formatted(VLVH[tier], VLVT[tier]))
                     .nonYAxisRotation()
-                    .renderer(() -> new SimpleGeneratorMachineRenderer(tier, GTOCore.id("block/generators/lightning_rod")))
+                    .renderer(() -> new SimpleGeneratorMachineRenderer(tier, GTECore.id("block/generators/lightning_rod")))
                     .tooltips(Component.translatable("gtecore.machine.lightning_rod.tooltip.0"))
                     .tooltips(Component.translatable("gtecore.machine.lightning_rod.tooltip.1"))
                     .tooltips(Component.translatable("gtecore.machine.lightning_rod.tooltip.2"))
@@ -137,7 +151,7 @@ public interface GTEMachines {
             EV, IV, LuV);
 
     MachineDefinition[] WIND_MILL_TURBINE = registerTieredMachines(
-            "wind_mill_turbine", tier -> "%s风力发电机 %s".formatted(GTOValues.VLVHCN[tier], VLVT[tier]),
+            "wind_mill_turbine", tier -> "%s风力发电机 %s".formatted(GTEValues.VLVHCN[tier], VLVT[tier]),
             WindMillTurbineMachine::new,
             (tier, builder) -> builder
                     .langValue("%s Wind Mill Turbine %s".formatted(VLVH[tier], VLVT[tier]))
@@ -146,7 +160,7 @@ public interface GTEMachines {
                     .hasTESR(true)
                     .tooltips(Component.translatable("gtecore.machine.wind_mill_turbine.tooltip.0"))
                     .tooltips(Component.translatable("gtecore.machine.wind_mill_turbine.tooltip.1"))
-                    .tooltips(Component.translatable("gtceu.universal.tooltip.amperage_out", GTOConfig.getDifficulty() == 1 ? 2 : 1))
+                    .tooltips(Component.translatable("gtceu.universal.tooltip.amperage_out", GTEConfig.getDifficulty() == 1 ? 2 : 1))
                     .tooltips(Component.translatable("gtceu.universal.tooltip.voltage_out",
                             FormattingUtil.formatNumbers(V[tier]), VNF[tier]))
                     .tooltips(Component.translatable("gtceu.universal.tooltip.energy_storage_capacity",
@@ -192,30 +206,30 @@ public interface GTEMachines {
     //////////////////////////////////////
     // ********** Part **********//
     //////////////////////////////////////
-    MachineDefinition[] THREAD_HATCH = registerTieredMachines("thread_hatch", tier -> GTOValues.VNFR[tier] + "线程仓",
+    MachineDefinition[] THREAD_HATCH = registerTieredMachines("thread_hatch", tier -> GTEValues.VNFR[tier] + "线程仓",
             ThreadHatchPartMachine::new, (tier, builder) -> builder
                     .langValue(VNF[tier] + " Thread Hatch")
                     .allRotation()
-                    .abilities(GTOPartAbility.THREAD_HATCH)
-                    .workableTieredHullRenderer(GTOCore.id("block/machines/thread_hatch/thread_hatch_mk" + (tier - 8)))
+                    .abilities(GTEPartAbility.THREAD_HATCH)
+                    .workableTieredHullRenderer(GTECore.id("block/machines/thread_hatch/thread_hatch_mk" + (tier - 8)))
                     .tooltips(Component.translatable("gtecore.machine.thread_hatch.tooltip.0", 1 << (tier - ZPM)))
                     .tooltipsKey("gtceu.universal.disabled")
                     .register(),
             UHV, UEV, UIV, UXV, OpV, MAX);
 
-    MachineDefinition[] ACCELERATE_HATCH = registerTieredMachines("accelerate_hatch", tier -> GTOValues.VNFR[tier] + "加速仓",
+    MachineDefinition[] ACCELERATE_HATCH = registerTieredMachines("accelerate_hatch", tier -> GTEValues.VNFR[tier] + "加速仓",
             AccelerateHatchPartMachine::new, (tier, builder) -> builder
                     .langValue(VNF[tier] + " Accelerate Hatch")
                     .allRotation()
-                    .abilities(GTOPartAbility.ACCELERATE_HATCH)
+                    .abilities(GTEPartAbility.ACCELERATE_HATCH)
                     .tooltips(Component.translatable("gtecore.machine.accelerate_hatch.tooltip.0"))
                     .tooltips(Component.translatable("gtecore.machine.accelerate_hatch.tooltip.1"))
                     .tooltipsKey("gtceu.universal.disabled")
-                    .workableTieredHullRenderer(GTOCore.id("block/machines/accelerate_hatch/accelerate_hatch_mk" + tier))
+                    .workableTieredHullRenderer(GTECore.id("block/machines/accelerate_hatch/accelerate_hatch_mk" + tier))
                     .register(),
             tiersBetween(LV, MAX));
 
-    MachineDefinition[] PROGRAMMABLEC_HATCH = registerTieredMachines("programmablec_hatch", tier -> GTOValues.VNFR[tier] + "可编程仓",
+    MachineDefinition[] PROGRAMMABLEC_HATCH = registerTieredMachines("programmablec_hatch", tier -> GTEValues.VNFR[tier] + "可编程仓",
             (holder, tier) -> new ProgrammableHatchPartMachine(holder, tier, IN),
             (tier, builder) -> builder
                     .langValue("%s Programmablec Hatch".formatted(VNF[tier]))
@@ -229,7 +243,7 @@ public interface GTEMachines {
                     .register(),
             tiersBetween(LV, MAX));
 
-    MachineDefinition[] ENERGY_INPUT_HATCH_4A = registerTieredMachines("energy_input_hatch_4a", tier -> 4 + "安" + GTOValues.VNFR[tier] + "能源仓",
+    MachineDefinition[] ENERGY_INPUT_HATCH_4A = registerTieredMachines("energy_input_hatch_4a", tier -> 4 + "安" + GTEValues.VNFR[tier] + "能源仓",
             (holder, tier) -> new EnergyHatchPartMachine(holder, tier, IO.IN, 4),
             (tier, builder) -> builder
                     .langValue(VNF[tier] + " 4A Energy Hatch")
@@ -240,7 +254,7 @@ public interface GTEMachines {
                     .register(),
             tiersBetween(LV, HV));
 
-    MachineDefinition[] ENERGY_OUTPUT_HATCH_4A = registerTieredMachines("energy_output_hatch_4a", tier -> 4 + "安" + GTOValues.VNFR[tier] + "动力仓",
+    MachineDefinition[] ENERGY_OUTPUT_HATCH_4A = registerTieredMachines("energy_output_hatch_4a", tier -> 4 + "安" + GTEValues.VNFR[tier] + "动力仓",
             (holder, tier) -> new EnergyHatchPartMachine(holder, tier, IO.OUT, 4),
             (tier, builder) -> builder
                     .langValue(VNF[tier] + " 4A Dynamo Hatch")
@@ -251,7 +265,7 @@ public interface GTEMachines {
                     .register(),
             tiersBetween(LV, HV));
 
-    MachineDefinition[] ENERGY_INPUT_HATCH_16A = registerTieredMachines("energy_input_hatch_16a", tier -> 16 + "安" + GTOValues.VNFR[tier] + "能源仓",
+    MachineDefinition[] ENERGY_INPUT_HATCH_16A = registerTieredMachines("energy_input_hatch_16a", tier -> 16 + "安" + GTEValues.VNFR[tier] + "能源仓",
             (holder, tier) -> new EnergyHatchPartMachine(holder, tier, IO.IN, 16),
             (tier, builder) -> builder
                     .langValue(VNF[tier] + " 16A Energy Hatch")
@@ -262,7 +276,7 @@ public interface GTEMachines {
                     .register(),
             tiersBetween(LV, HV));
 
-    MachineDefinition[] ENERGY_OUTPUT_HATCH_16A = registerTieredMachines("energy_output_hatch_16a", tier -> 16 + "安" + GTOValues.VNFR[tier] + "动力仓",
+    MachineDefinition[] ENERGY_OUTPUT_HATCH_16A = registerTieredMachines("energy_output_hatch_16a", tier -> 16 + "安" + GTEValues.VNFR[tier] + "动力仓",
             (holder, tier) -> new EnergyHatchPartMachine(holder, tier, IO.OUT, 16),
             (tier, builder) -> builder
                     .langValue(VNF[tier] + " 16A Dynamo Hatch")
@@ -273,11 +287,11 @@ public interface GTEMachines {
                     .register(),
             tiersBetween(LV, HV));
 
-    MachineDefinition[] DRONE_HATCH = registerTieredMachines("drone_hatch", tier -> GTOValues.VNFR[tier] + "无人机仓",
+    MachineDefinition[] DRONE_HATCH = registerTieredMachines("drone_hatch", tier -> GTEValues.VNFR[tier] + "无人机仓",
             DroneHatchPartMachine::new, (tier, builder) -> builder
                     .langValue(VNF[tier] + " Drone Hatch")
                     .allRotation()
-                    .abilities(GTOPartAbility.DRONE_HATCH)
+                    .abilities(GTEPartAbility.DRONE_HATCH)
                     .tooltipsKey("gtceu.universal.disabled")
                     .renderer(() -> new OverlayTieredMachineRenderer(tier, GTCEu.id("block/machine/part/item_bus.import")))
                     .register(),
@@ -358,7 +372,7 @@ public interface GTEMachines {
             (tier, builder) -> builder
                     .langValue(VNF[tier] + "Neutron Accelerator")
                     .allRotation()
-                    .abilities(GTOPartAbility.NEUTRON_ACCELERATOR)
+                    .abilities(GTEPartAbility.NEUTRON_ACCELERATOR)
                     .tooltips(Component.translatable("gtceu.universal.tooltip.max_voltage_in", V[tier], VNF[tier]),
                             Component.translatable("gtecore.machine.neutron_accelerator.tooltip.0", (V[tier] << 3) / 10),
                             Component.translatable("gtecore.machine.neutron_accelerator.tooltip.1"),
@@ -407,7 +421,7 @@ public interface GTEMachines {
                             Component.translatable(type.getTranslationKey()).getString())));
                 }
             })
-            .renderer(() -> new MaintenanceHatchPartRenderer(7, GTOCore.id("block/machine/part/maintenance.sterile_cleaning")))
+            .renderer(() -> new MaintenanceHatchPartRenderer(7, GTECore.id("block/machine/part/maintenance.sterile_cleaning")))
             .register();
 
     MachineDefinition LAW_CLEANING_MAINTENANCE_HATCH = machine("law_cleaning_maintenance_hatch", "绝对洁净维护仓", holder -> new CMHatchPartMachine(holder, CMHatchPartMachine.LAW_DUMMY_CLEANROOM))
@@ -423,7 +437,7 @@ public interface GTEMachines {
                             Component.translatable(type.getTranslationKey()).getString())));
                 }
             })
-            .renderer(() -> new MaintenanceHatchPartRenderer(10, GTOCore.id("block/machine/part/maintenance.law_cleaning")))
+            .renderer(() -> new MaintenanceHatchPartRenderer(10, GTECore.id("block/machine/part/maintenance.law_cleaning")))
             .register();
 
     MachineDefinition AUTO_CONFIGURATION_MAINTENANCE_HATCH = machine("auto_configuration_maintenance_hatch", "可配置自动维护仓", ACMHatchPartMachine::new)
@@ -462,7 +476,7 @@ public interface GTEMachines {
                             Component.translatable(type.getTranslationKey()).getString())));
                 }
             })
-            .renderer(() -> new MaintenanceHatchPartRenderer(9, GTOCore.id("block/machine/part/maintenance.sterile_cleaning")))
+            .renderer(() -> new MaintenanceHatchPartRenderer(9, GTECore.id("block/machine/part/maintenance.sterile_cleaning")))
             .register();
 
     MachineDefinition LAW_CONFIGURATION_CLEANING_MAINTENANCE_HATCH = machine("law_configuration_cleaning_maintenance_hatch", "绝对洁净可配置维护仓", holder -> new CCMHatchPartMachine(holder, CMHatchPartMachine.LAW_DUMMY_CLEANROOM))
@@ -478,7 +492,7 @@ public interface GTEMachines {
                             Component.translatable(type.getTranslationKey()).getString())));
                 }
             })
-            .renderer(() -> new MaintenanceHatchPartRenderer(12, GTOCore.id("block/machine/part/maintenance.law_cleaning")))
+            .renderer(() -> new MaintenanceHatchPartRenderer(12, GTECore.id("block/machine/part/maintenance.law_cleaning")))
             .register();
 
     MachineDefinition GRAVITY_HATCH = machine("gravity_hatch", "重力控制仓", GravityHatchPartMachine::new)

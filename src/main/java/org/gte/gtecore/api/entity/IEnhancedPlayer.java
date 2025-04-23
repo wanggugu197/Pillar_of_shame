@@ -1,5 +1,6 @@
 package org.gte.gtecore.api.entity;
 
+import org.gte.gtecore.api.data.GTEDimensions;
 import org.gte.gtecore.common.item.armor.SpaceArmorComponentItem;
 import org.gte.gtecore.utils.ItemUtils;
 
@@ -35,6 +36,7 @@ public interface IEnhancedPlayer {
                 }
                 return false;
             }
+            return !(player.gTECore$isWardenState() && level.dimension().location().equals(GTEDimensions.OTHERSIDE));
         }
         return true;
     }

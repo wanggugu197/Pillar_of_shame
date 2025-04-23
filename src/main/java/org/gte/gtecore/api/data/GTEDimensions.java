@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
 import com.google.common.collect.ImmutableMap;
+import com.kyanite.deeperdarker.DeeperDarker;
 
 import java.util.Set;
 
@@ -30,6 +31,7 @@ public final class GTEDimensions {
     public static final ResourceLocation ENCELADUS = GTECore.id("enceladus");
     public static final ResourceLocation CERES = GTECore.id("ceres");
     public static final ResourceLocation BARNARDA_C = GTECore.id("barnarda_c");
+    public static final ResourceLocation OTHERSIDE = DeeperDarker.rl("otherside");
 
     public static final ResourceLocation FLAT = GTECore.id("flat");
     public static final ResourceLocation VOID = GTECore.id("void");
@@ -125,6 +127,7 @@ public final class GTEDimensions {
         ALL_LAYERBuilder.put(ANCIENT_WORLD, 0);
         ALL_LAYERBuilder.put(THE_NETHER, 0);
         ALL_LAYERBuilder.put(THE_END, 0);
+        ALL_LAYERBuilder.put(OTHERSIDE, 10);
         ALL_LAYER_DIMENSION = ALL_LAYERBuilder.build();
     }
 

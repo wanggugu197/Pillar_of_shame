@@ -3,6 +3,7 @@ package org.gte.gtecore.utils;
 import net.minecraft.resources.ResourceLocation;
 
 import earth.terrarium.adastra.AdAstra;
+import vazkii.botania.api.BotaniaAPI;
 
 public final class RLUtils {
 
@@ -38,5 +39,9 @@ public final class RLUtils {
 
     public static ResourceLocation ad(String path) {
         return new ResourceLocation(AdAstra.MOD_ID, path);
+    }
+
+    public static ResourceLocation bot(String path) {
+        return new ResourceLocation(BotaniaAPI.MODID, path);
     }
 }

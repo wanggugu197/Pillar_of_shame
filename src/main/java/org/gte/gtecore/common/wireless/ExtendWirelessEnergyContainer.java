@@ -2,12 +2,16 @@ package org.gte.gtecore.common.wireless;
 
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 
+import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.GlobalPos;
 
 import com.hepdd.gtmthings.api.misc.WirelessEnergyContainer;
 import com.hepdd.gtmthings.data.WirelessEnergySavaedData;
 import com.hepdd.gtmthings.utils.BigIntegerUtils;
 import lombok.Getter;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.math.BigInteger;
@@ -19,6 +23,8 @@ public class ExtendWirelessEnergyContainer extends WirelessEnergyContainer {
     private BigInteger capacity;
 
     private int loss;
+
+    private final Object2IntOpenHashMap<ResourceLocation> dimension = new Object2IntOpenHashMap<>();
 
     public ExtendWirelessEnergyContainer(UUID uuid, BigInteger storage, long rate, GlobalPos bindPos, BigInteger capacity, int loss) {
         super(uuid, storage, rate, bindPos);
@@ -43,6 +49,18 @@ public class ExtendWirelessEnergyContainer extends WirelessEnergyContainer {
             TRANSFER_DATA.put(machine, new ExtendTransferData(getUuid(), actualChange, loss, machine));
         }
         return change;
+    }
+
+    @Override
+    public long removeEnergy(long energy, @Nullable MetaMachine machine) {
+        if (machine instanceof ITieredMachine tieredMachine) {
+            Level level = machine.getLevel();
+            if (level != null) {
+                int tier = dimension.getInt(level.dimension().location());
+                if (tier < tieredMachine.getTier()) return 0;
+            }
+        }
+        return super.removeEnergy(energy, machine);
     }
 
     public long unrestrictedAddEnergy(long energy) {

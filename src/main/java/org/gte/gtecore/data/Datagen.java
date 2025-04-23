@@ -5,9 +5,9 @@ import org.gte.gtecore.data.lang.provider.SimplifiedChineseLanguageProvider;
 import org.gte.gtecore.data.lang.provider.TraditionalChineseLanguageProvider;
 
 import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.data.tags.TagsHandler;
 
 import com.tterrag.registrate.providers.ProviderType;
+import org.gte.gtecore.data.tag.TagsHandler;
 
 import static org.gte.gtecore.api.registries.GTERegistration.REGISTRATE;
 

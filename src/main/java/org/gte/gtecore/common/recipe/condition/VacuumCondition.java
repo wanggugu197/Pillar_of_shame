@@ -1,6 +1,6 @@
 package org.gte.gtecore.common.recipe.condition;
 
-import org.gte.gtecore.api.machine.IVacuumMachine;
+import org.gte.gtecore.api.machine.feature.IVacuumMachine;
 import org.gte.gtecore.common.data.GTERecipeConditions;
 
 import com.gregtechceu.gtceu.api.machine.MetaMachine;

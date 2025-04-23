@@ -28,7 +28,7 @@ public final class ClientProxy extends CommonProxy {
     }
 
     private static void init() {
-        // CraftingUnitModelProvider.initCraftingUnitModels();
+        CraftingUnitModelProvider.initCraftingUnitModels();
         KeyBind.init();
     }
 
@@ -40,7 +40,7 @@ public final class ClientProxy extends CommonProxy {
         ItemBlockRenderTypes.setRenderLayer(GTEBlocks.CRAFTING_STORAGE_64M.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(GTEBlocks.CRAFTING_STORAGE_256M.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(GTEBlocks.CRAFTING_STORAGE_MAX.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(GTEFluids.GELID_CRYOTHEUM.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(GTEBlocks.GELID_CRYOTHEUM.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(GTEFluids.FLOWING_GELID_CRYOTHEUM.get(), RenderType.translucent());
     }
 }

@@ -30,7 +30,7 @@ public interface ICheckPatternMachine {
                     () -> checkPatternMachine.gTECore$getTime() < 1, (clickData, pressed) -> {
                         if (checkPatternMachine.gTECore$getTime() > 0) checkPatternMachine.gTECore$setTime(0);
                     })
-                    .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtocore.machine.structure_check"))));
+                    .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtecore.machine.structure_check"))));
         }
     }
 }
