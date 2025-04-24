@@ -48,6 +48,7 @@ public class CommonProxy {
         REGISTRATE.registerEventListeners(eventBus);
         GTEFluids.FLUID_TYPE.register(eventBus);
         GTEFluids.FLUID.register(eventBus);
+        GTEEffects.init(eventBus);
         eventBus.addListener(CommonProxy::commonSetup);
         eventBus.addListener(CommonProxy::addMaterials);
         eventBus.addListener(CommonProxy::registerMaterialRegistry);
@@ -92,7 +93,7 @@ public class CommonProxy {
         if (GTCEu.isProd() && GTCEu.Mods.isEMILoaded()) EMIRecipeModHelper.setRecipeModHelper();
 
         if (GTCEu.isClientSide()) {
-            Thread thread = new Thread(Data::asyncInit, "GTOCore Data");
+            Thread thread = new Thread(Data::asyncInit, "GTECore Data");
             thread.setDaemon(true);
             thread.setPriority(Thread.MIN_PRIORITY);
             thread.start();

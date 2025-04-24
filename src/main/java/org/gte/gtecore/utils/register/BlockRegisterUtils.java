@@ -89,7 +89,7 @@ public final class BlockRegisterUtils {
         return REGISTRATE.block(name, factory).onRegister(GTELoots.BLOCKS::add);
     }
 
-    public static void registerOreBlock(Material material, GTRegistrate registrate, ImmutableMap<Material, Set<TagPrefix>> ORE_MAP, Set<TagPrefix> gTOCore$DEEPSLATE, ImmutableTable.Builder<TagPrefix, Material, BlockEntry<? extends MaterialBlock>> MATERIAL_BLOCKS_BUILDER) {
+    public static void registerOreBlock(Material material, GTRegistrate registrate, ImmutableMap<Material, Set<TagPrefix>> ORE_MAP, Set<TagPrefix> gTECore$DEEPSLATE, ImmutableTable.Builder<TagPrefix, Material, BlockEntry<? extends MaterialBlock>> MATERIAL_BLOCKS_BUILDER) {
         float destroyTime = (float) material.getMass() / 50;
         float explosionResistance = (float) material.getBlastTemperature() / 500;
         for (var ore : TagPrefix.ORES.entrySet()) {
@@ -97,7 +97,7 @@ public final class BlockRegisterUtils {
             var oreTag = ore.getKey();
             if (oreTag != TagPrefix.ore) {
                 Set<TagPrefix> tagPrefixes = ORE_MAP.get(material);
-                if (tagPrefixes == null || (!gTOCore$DEEPSLATE.contains(oreTag) && !tagPrefixes.contains(oreTag))) continue;
+                if (tagPrefixes == null || (!gTECore$DEEPSLATE.contains(oreTag) && !tagPrefixes.contains(oreTag))) continue;
             }
             final TagPrefix.OreType oreType = ore.getValue();
             if (ore.getKey() instanceof GTETagPrefix) registrate = REGISTRATE;

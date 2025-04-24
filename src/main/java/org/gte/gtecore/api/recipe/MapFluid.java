@@ -1,9 +1,11 @@
 package org.gte.gtecore.api.recipe;
 
+import org.gte.gtecore.utils.FluidUtils;
+
 import com.gregtechceu.gtceu.api.recipe.lookup.AbstractMapIngredient;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.material.Fluid;
-import org.gte.gtecore.utils.FluidUtils;
 
 import java.util.Objects;
 

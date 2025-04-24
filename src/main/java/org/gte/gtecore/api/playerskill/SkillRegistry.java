@@ -1,11 +1,12 @@
 package org.gte.gtecore.api.playerskill;
 
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.gte.gtecore.api.playerskill.data.AttributeRecord;
 import org.gte.gtecore.api.playerskill.data.PlayerData;
 import org.gte.gtecore.api.playerskill.eventhandler.normal.ExperienceAddedSendMessageHandler;
 import org.gte.gtecore.api.playerskill.eventhandler.normal.LevelAddedSendMessageHandler;
+
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -45,7 +46,7 @@ public final class SkillRegistry {
          */
         LIFE_INTENSITY = register(SkillType.builder()
                 .id("life_intensity") // 必须 id
-                .nameTranslateKey("gtocore.player_exp_status.body_name") // 必须
+                .nameTranslateKey("gtecore.player_exp_status.body_name") // 必须
                 .levelStepPerVoltage(3) // 必须,若为0则无法升级
                 .chineseName("生命强度") // 必须
                 .englishName("Life Intensity") // 必须
@@ -66,7 +67,7 @@ public final class SkillRegistry {
          */
         PHYSIQUE = register(SkillType.builder()
                 .id("physique")
-                .nameTranslateKey("gtocore.player_exp_status.health_name")
+                .nameTranslateKey("gtecore.player_exp_status.health_name")
                 .levelStepPerVoltage(5)
                 .chineseName("体格")
                 .englishName("Physique")
@@ -88,7 +89,7 @@ public final class SkillRegistry {
          */
         STRENGTH = register(SkillType.builder()
                 .id("strength")
-                .nameTranslateKey("gtocore.player_exp_status.attack_name")
+                .nameTranslateKey("gtecore.player_exp_status.attack_name")
                 .levelStepPerVoltage(5)
                 .chineseName("力量")
                 .englishName("Strength")

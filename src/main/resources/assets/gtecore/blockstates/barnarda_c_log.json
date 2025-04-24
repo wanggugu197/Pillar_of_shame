@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "gtecore:block/barnarda_c_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "gtecore:block/barnarda_c_log"
+    },
+    "axis=z": {
+      "model": "gtecore:block/barnarda_c_log",
+      "x": 90
+    }
+  }
+}

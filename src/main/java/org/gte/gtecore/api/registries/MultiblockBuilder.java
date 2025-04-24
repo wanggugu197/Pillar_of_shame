@@ -1,8 +1,6 @@
 package org.gte.gtecore.api.registries;
 
-import com.gregtechceu.gtceu.api.machine.SimpleGeneratorMachine;
 import org.gte.gtecore.api.recipe.GTERecipeModifier;
-import org.gte.gtecore.api.recipe.GTERecipeType;
 import org.gte.gtecore.api.recipe.JointRecipeType;
 import org.gte.gtecore.common.data.GTERecipeModifiers;
 import org.gte.gtecore.common.machine.multiblock.steam.LargeSteamParallelMultiblockMachine;

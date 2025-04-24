@@ -1,9 +1,11 @@
 package org.gte.gtecore.integration.emi.oreprocessing;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+
+import net.minecraft.resources.ResourceLocation;
+
 import com.lowdragmc.lowdraglib.emi.ModularEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
 class OreProcessingEmiRecipe extends ModularEmiRecipe<OreByProductWidget> {

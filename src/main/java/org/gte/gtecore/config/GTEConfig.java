@@ -152,6 +152,7 @@ public class GTEConfig {
 
         ConfigHolder.INSTANCE.dev.debug = GTEConfig.INSTANCE.dev;
     }
+
     @Configurable
     @Configurable.Comment("旅行权杖最小CD")
     @Configurable.Range(min = 1)

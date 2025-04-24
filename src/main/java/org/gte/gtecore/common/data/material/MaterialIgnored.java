@@ -1,13 +1,14 @@
 package org.gte.gtecore.common.data.material;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
-import com.enderio.base.common.init.EIOBlocks;
-import com.enderio.base.common.init.EIOItems;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import com.enderio.base.common.init.EIOBlocks;
+import com.enderio.base.common.init.EIOItems;
 import earth.terrarium.adastra.common.registry.ModBlocks;
 import earth.terrarium.adastra.common.registry.ModItems;
 import vazkii.botania.common.block.BotaniaBlocks;

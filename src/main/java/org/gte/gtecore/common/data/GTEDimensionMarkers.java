@@ -22,28 +22,28 @@ public interface GTEDimensionMarkers {
         createAndRegister(GTEDimensions.GLACIO,
                 7, RLUtils.ad("glacio_stone"), "dimension.ad_astra.glacio");
         createAndRegister(GTEDimensions.ANCIENT_WORLD,
-                0, GTECore.id("reactor_core"), "biome.gtocore.ancient_world_biome");
+                0, GTECore.id("reactor_core"), "biome.gtecore.ancient_world_biome");
         createAndRegister(GTEDimensions.TITAN,
-                6, GTECore.id("titan_stone"), "biome.gtocore.titan_biome");
+                6, GTECore.id("titan_stone"), "biome.gtecore.titan_biome");
         createAndRegister(GTEDimensions.PLUTO,
-                6, GTECore.id("pluto_stone"), "biome.gtocore.pluto_biome");
+                6, GTECore.id("pluto_stone"), "biome.gtecore.pluto_biome");
         createAndRegister(GTEDimensions.IO,
-                5, GTECore.id("io_stone"), "biome.gtocore.io_biome");
+                5, GTECore.id("io_stone"), "biome.gtecore.io_biome");
         createAndRegister(GTEDimensions.GANYMEDE,
-                5, GTECore.id("ganymede_stone"), "biome.gtocore.ganymede_biome");
+                5, GTECore.id("ganymede_stone"), "biome.gtecore.ganymede_biome");
         createAndRegister(GTEDimensions.ENCELADUS,
-                6, GTECore.id("enceladus_stone"), "biome.gtocore.enceladus_biome");
+                6, GTECore.id("enceladus_stone"), "biome.gtecore.enceladus_biome");
         createAndRegister(GTEDimensions.CERES,
-                4, GTECore.id("ceres_stone"), "biome.gtocore.ceres_biome");
+                4, GTECore.id("ceres_stone"), "biome.gtecore.ceres_biome");
         createAndRegister(GTEDimensions.BARNARDA_C,
-                8, GTECore.id("barnarda_c_log"), "biome.gtocore.barnarda_c_biome");
+                8, GTECore.id("barnarda_c_log"), "biome.gtecore.barnarda_c_biome");
         createAndRegister(GTEDimensions.OTHERSIDE,
                 9, DeeperDarker.rl("sculk_stone"), "Otherside");
         createAndRegister(GTEDimensions.CREATE,
-                10, GTECore.id("dimension_creation_casing"), "biome.gtocore.create");
+                10, GTECore.id("dimension_creation_casing"), "biome.gtecore.create");
         createAndRegister(GTEDimensions.VOID,
-                0, RLUtils.mc("obsidian"), "biome.gtocore.void");
+                0, RLUtils.mc("obsidian"), "biome.gtecore.void");
         createAndRegister(GTEDimensions.FLAT,
-                0, RLUtils.mc("crying_obsidian"), "biome.gtocore.flat");
+                0, RLUtils.mc("crying_obsidian"), "biome.gtecore.flat");
     }
 }

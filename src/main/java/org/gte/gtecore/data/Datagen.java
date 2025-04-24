@@ -3,11 +3,11 @@ package org.gte.gtecore.data;
 import org.gte.gtecore.data.lang.LangHandler;
 import org.gte.gtecore.data.lang.provider.SimplifiedChineseLanguageProvider;
 import org.gte.gtecore.data.lang.provider.TraditionalChineseLanguageProvider;
+import org.gte.gtecore.data.tag.TagsHandler;
 
 import com.gregtechceu.gtceu.GTCEu;
 
 import com.tterrag.registrate.providers.ProviderType;
-import org.gte.gtecore.data.tag.TagsHandler;
 
 import static org.gte.gtecore.api.registries.GTERegistration.REGISTRATE;
 

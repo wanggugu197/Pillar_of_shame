@@ -46,11 +46,11 @@ public final class LangHandler {
     }
 
     private static void init() {
-        MaterialsRegisterUtils.LANG.forEach((k, v) -> addENCN("material.gtocore." + k, v));
+        MaterialsRegisterUtils.LANG.forEach((k, v) -> addENCN("material.gtecore." + k, v));
         RecipeTypeRegisterUtils.LANG.forEach((k, v) -> addENCN("gtceu." + k, v));
         GTEBedrockFluids.LANG.forEach((k, v) -> addENCN("gtceu.jei.bedrock_fluid." + k, v));
-        ItemRegisterUtils.LANG.forEach((k, v) -> addCN("item.gtocore." + k, v));
-        BlockRegisterUtils.LANG.forEach((k, v) -> addCN("block.gtocore." + k, v));
+        ItemRegisterUtils.LANG.forEach((k, v) -> addCN("item.gtecore." + k, v));
+        BlockRegisterUtils.LANG.forEach((k, v) -> addCN("block.gtecore." + k, v));
         GTEMachineBuilder.TOOLTIPS_MAP.forEach(LangHandler::addENCN);
         MultiblockBuilder.TOOLTIPS_MAP.forEach(LangHandler::addENCN);
         Tooltips.LANG.forEach(LangHandler::addENCN);
@@ -125,8 +125,8 @@ public final class LangHandler {
         addENCN("config.gtecore.option.dev", "Dev mode", "开发模式");
         addENCN("config.gtecore.option.gameDifficulty", "Game difficulty", "游戏难度");
         addENCN("config.gtecore.option.emiGlobalFavorites", "EMI Global Favorites", "全局 EMI 书签");
-        addENCN("config.gtocore.option.enableAnimalsAreAfraidToEatTheirMeat", "Enable Animals Are Afraid To Eat Their Meat", "启用动物害怕他们的肉被吃");
-        addENCN("config.gtocore.option.animalsAreAfraidToEatTheirMeatRange", "Animals Are Afraid To Eat Their Meat's Range", "动物害怕他们的肉被吃的范围");
+        addENCN("config.gtecore.option.enableAnimalsAreAfraidToEatTheirMeat", "Enable Animals Are Afraid To Eat Their Meat", "启用动物害怕他们的肉被吃");
+        addENCN("config.gtecore.option.animalsAreAfraidToEatTheirMeatRange", "Animals Are Afraid To Eat Their Meat's Range", "动物害怕他们的肉被吃的范围");
 
         addENCN("gtceu.jei.ore_vein.bauxite_vein", "Bauxite Vein", "铝土矿脉");
         addENCN("gtceu.jei.ore_vein.chromite_vein", "Chromite Vein", "铬铁矿脉");
@@ -224,8 +224,10 @@ public final class LangHandler {
         addENCN("gtecore.player_exp_status.get_experience", "You got %s point of %s experience", "你获得了%s点%s经验");
         addENCN("gtecore.player_exp_status.add_level", "Your %s skill has been upgraded to level %s", "你的%s技能升到了%s级");
         addENCN("gtecore.player_exp_status.sup.error", "The %s level of %s can only use the %s skill upgrade package of %s and " + GOLD + BOLD + "above", "%s级别的%s等级只能使用%s及" + GOLD + BOLD + "以上" + RESET + "等级的%s能力提升包");
+        addENCN("gtecore.player_exp_status.mysterious_boost_potion.success", "You seem to be granted with some mysterious ability ......", "你似乎被赋予了某种神秘能力...");
 
-        addENCN("gtocore.xaero_waypoint_set", "Ore Vein", "矿脉");
+        addENCN("gtecore.xaero_waypoint_set", "Ore Vein", "矿脉");
+        addENCN("effect.gtecore.mysterious_boost", "Possession of the Machine God", "机械之神附身");
 
         addENCN("gtecore.teleport.not_safe", "It's not safe now, we can't teleport", "现在不安全，不能传送");
     }

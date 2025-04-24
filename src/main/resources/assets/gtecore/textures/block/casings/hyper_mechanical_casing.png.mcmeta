@@ -1,0 +1,5 @@
+{
+    "ldlib": {
+        "connection": "gtecore:block/casings/hyper_mechanical_casing_ctm"
+    }
+}

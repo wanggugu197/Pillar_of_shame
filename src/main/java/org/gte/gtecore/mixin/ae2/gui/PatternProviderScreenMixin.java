@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PatternProviderScreenMixin<C extends PatternProviderMenu> extends AEBaseScreen<C> {
 
     @Unique
-    private SettingToggleButton<BlockingType> gtocore$enhancedblockingmodebutton;
+    private SettingToggleButton<BlockingType> gtecore$enhancedblockingmodebutton;
 
     protected PatternProviderScreenMixin(C menu, Inventory playerInventory, Component title, ScreenStyle style) {
         super(menu, playerInventory, title, style);
@@ -31,12 +31,12 @@ public abstract class PatternProviderScreenMixin<C extends PatternProviderMenu> 
 
     @Inject(method = "<init>", at = @At("TAIL"), remap = false)
     private void init(PatternProviderMenu menu, Inventory playerInventory, Component title, ScreenStyle style, CallbackInfo ci) {
-        this.gtocore$enhancedblockingmodebutton = new ServerSettingToggleButton<>(GTESettings.BLOCKING_TYPE, BlockingType.ALL);
-        this.addToLeftToolbar(this.gtocore$enhancedblockingmodebutton);
+        this.gtecore$enhancedblockingmodebutton = new ServerSettingToggleButton<>(GTESettings.BLOCKING_TYPE, BlockingType.ALL);
+        this.addToLeftToolbar(this.gtecore$enhancedblockingmodebutton);
     }
 
     @Inject(method = "updateBeforeRender", at = @At("TAIL"), remap = false)
     private void updateBeforeRender(CallbackInfo ci) {
-        this.gtocore$enhancedblockingmodebutton.set(((IPatternProviderMenu) menu).gtecore$getBlocking());
+        this.gtecore$enhancedblockingmodebutton.set(((IPatternProviderMenu) menu).gtecore$getBlocking());
     }
 }

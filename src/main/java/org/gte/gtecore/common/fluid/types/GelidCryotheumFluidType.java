@@ -14,7 +14,7 @@ public final class GelidCryotheumFluidType extends FluidType {
 
     public GelidCryotheumFluidType() {
         super(Properties.create().fallDistanceModifier(0.0F).canExtinguish(true).supportsBoating(true).canHydrate(true).motionScale(0.014D).temperature(0).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-                .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).descriptionId("fluid.gtocore.gelid_cryotheum"));
+                .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH).descriptionId("fluid.gtecore.gelid_cryotheum"));
     }
 
     @Override

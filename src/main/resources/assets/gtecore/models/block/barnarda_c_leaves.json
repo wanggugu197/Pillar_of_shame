@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "gtecore:block/barnardac_leaves",
+    "particle": "gtecore:block/barnardac_leaves"
+  }
+}

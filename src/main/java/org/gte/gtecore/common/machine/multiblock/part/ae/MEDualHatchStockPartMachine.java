@@ -242,7 +242,7 @@ public final class MEDualHatchStockPartMachine extends MEBusPartMachine implemen
                 GuiTextures.BUTTON_AUTO_PULL.getSubTexture(0, 0, 1, 0.5),
                 AUTO_PULL_ALL_ICON,
                 AUTO_PULL_ITEM_ICON,
-                AUTO_PULL_FLUID_ICON).setTooltipsSupplier(mode -> List.of(Component.translatable("gtocore.machine.me_dual_hatch_stock.turns." + mode))));
+                AUTO_PULL_FLUID_ICON).setTooltipsSupplier(mode -> List.of(Component.translatable("gtecore.machine.me_dual_hatch_stock.turns." + mode))));
     }
 
     private void setAutoPullMode(int autoPullMode) {
@@ -335,7 +335,7 @@ public final class MEDualHatchStockPartMachine extends MEBusPartMachine implemen
             CompoundTag tag = new CompoundTag();
             tag.put("MEDualHatchStock", writeConfigToTag());
             dataStick.setTag(tag);
-            dataStick.setHoverName(Component.translatable("gtocore.machine.me_dual_hatch_stock.data_stick.name"));
+            dataStick.setHoverName(Component.translatable("gtecore.machine.me_dual_hatch_stock.data_stick.name"));
             player.sendSystemMessage(Component.translatable("gtceu.machine.me.import_copy_settings"));
         }
         return InteractionResult.SUCCESS;

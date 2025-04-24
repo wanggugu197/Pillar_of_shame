@@ -284,10 +284,10 @@ public final class EncapsulatorExecutionModuleMachine extends StorageMultiblockM
     public void customText(List<Component> textList) {
         super.customText(textList);
         if (encapsulatorMachine == null) return;
-        textList.add(Component.translatable("gtocore.tooltip.item.craft_step", packageRecipe.size() + " / " + encapsulatorMachine.processingAmount));
+        textList.add(Component.translatable("gtecore.tooltip.item.craft_step", packageRecipe.size() + " / " + encapsulatorMachine.processingAmount));
         textList.add(ComponentPanelWidget.withButton(Component.literal("[").append(Component.translatable("gui.ae2.Clean")).append(Component.literal("]")), "clean"));
         if (finalRecipe == null && packageRecipe.size() < encapsulatorMachine.processingAmount) textList.add(ComponentPanelWidget.withButton(Component.literal("[").append(Component.translatable("gui.jade.search")).append(Component.literal("]")), "search"));
-        if (finalRecipe == null && !packageRecipe.isEmpty()) textList.add(ComponentPanelWidget.withButton(Component.literal("[").append(Component.translatable("gtocore.build")).append(Component.literal("]")), "build"));
+        if (finalRecipe == null && !packageRecipe.isEmpty()) textList.add(ComponentPanelWidget.withButton(Component.literal("[").append(Component.translatable("gtecore.build")).append(Component.literal("]")), "build"));
         if (finalRecipe != null) textList.add(ComponentPanelWidget.withButton(Component.literal("[").append(Component.translatable("gui.ae2.Patterns")).append(Component.literal("]")), "pattern"));
     }
 

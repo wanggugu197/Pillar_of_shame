@@ -1,10 +1,10 @@
 package org.gte.gtecore.common.forge;
 
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import org.gte.gtecore.api.playerskill.utils.UtilsAttribute;
 
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ExperienceEventHandler {

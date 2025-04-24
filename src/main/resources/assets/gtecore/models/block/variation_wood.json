@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "gtecore:block/variation_wood_top",
+    "up": "gtecore:block/variation_wood_top",
+    "north": "gtecore:block/variation_wood_side",
+    "east": "gtecore:block/variation_wood_side",
+    "south": "gtecore:block/variation_wood_side",
+    "west": "gtecore:block/variation_wood_side",
+    "particle": "gtecore:block/variation_wood_top"
+  },
+  "render_type": "solid"
+}

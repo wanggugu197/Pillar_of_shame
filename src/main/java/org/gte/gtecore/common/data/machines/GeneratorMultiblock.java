@@ -175,9 +175,9 @@ public interface GeneratorMultiblock {
                 .allRotation()
                 .recipe(recipeType)
                 .generator()
-                .tooltipsKey("gtocore.machine.mega_steam_turbine.tooltip.0")
-                .tooltipsKey("gtocore.machine.mega_steam_turbine.tooltip.1")
-                .tooltipsKey("gtocore.machine.mega_steam_turbine.tooltip.2")
+                .tooltipsKey("gtecore.machine.mega_steam_turbine.tooltip.0")
+                .tooltipsKey("gtecore.machine.mega_steam_turbine.tooltip.1")
+                .tooltipsKey("gtecore.machine.mega_steam_turbine.tooltip.2")
                 .tooltipsKey("gtceu.universal.tooltip.base_production_eut", V[tier] * (special ? 12 : 8))
                 .tooltipsKey("gtceu.multiblock.turbine.efficiency_tooltip", VNF[tier])
                 .alwaysTryModifyRecipe(true)
@@ -578,7 +578,7 @@ public interface GeneratorMultiblock {
             .recipe(GTRecipeTypes.DUMMY_RECIPES)
             .generator()
             .tooltipsText("Strong operational environment will %s the power of small generators inside the machine.", "强大的运行环境会让机器中的小发电机功率x%s", GeneratorArrayMachine.getMultiply())
-            .tooltipsText("Can enable wireless network mode, the generated electrical energy will be directly sent to the wireless network, %s", "可以开启无线电网模式，产生的电能会直接送入无线电网，%s", Component.translatable("gtocore.machine.energy_loss", "5%"))
+            .tooltipsText("Can enable wireless network mode, the generated electrical energy will be directly sent to the wireless network, %s", "可以开启无线电网模式，产生的电能会直接送入无线电网，%s", Component.translatable("gtecore.machine.energy_loss", "5%"))
             .tooltipsKey("gtceu.machine.available_recipe_map_6.tooltip",
                     Component.translatable("gtceu.steam_turbine"),
                     Component.translatable("gtceu.combustion_generator"),

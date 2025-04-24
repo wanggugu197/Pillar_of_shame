@@ -4113,7 +4113,7 @@ interface Assembler {
                 .inputItems("apotheosis:gem_cutting_table")
                 .inputItems("apotheosis:sigil_of_rebirth", 6)
                 .inputItems("apotheosis:sigil_of_enhancement", 4)
-                .inputItems("gtocore:pulsating_alloy_quadruple_wire", 16)
+                .inputItems("gtecore:pulsating_alloy_quadruple_wire", 16)
                 .inputItems(GTItems.VOLTAGE_COIL_ULV.asStack(8))
                 .inputItems(GTEItems.ULV_CONVEYOR_MODULE.asStack(4))
                 .inputItems(GTEItems.ULV_ROBOT_ARM.asStack(4))

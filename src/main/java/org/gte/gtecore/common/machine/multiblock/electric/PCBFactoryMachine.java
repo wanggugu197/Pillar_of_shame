@@ -34,7 +34,7 @@ public final class PCBFactoryMachine extends StorageMultiblockMachine {
     private void getPCBReduction() {
         ItemStack itemStack = getStorageStack();
         String item = ItemUtils.getId(itemStack);
-        if (Objects.equals(item, "gtocore:vibranium_nanites")) {
+        if (Objects.equals(item, "gtecore:vibranium_nanites")) {
             reductionDuration = (double) (100 - itemStack.getCount()) / 100;
             reductionEUt = 0.25;
         } else if (Objects.equals(item, "gtceu:gold_nanites")) {

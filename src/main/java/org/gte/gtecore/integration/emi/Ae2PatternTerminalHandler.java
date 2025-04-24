@@ -1,11 +1,21 @@
 package org.gte.gtecore.integration.emi;
 
+import org.gte.gtecore.integration.emi.multipage.MultiblockInfoEmiRecipe;
+
+import com.gregtechceu.gtceu.api.item.MetaMachineItem;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
+
 import appeng.api.stacks.AEFluidKey;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.GenericStack;
 import appeng.integration.modules.jeirei.EncodingHelper;
 import appeng.menu.me.items.PatternEncodingTermMenu;
-import com.gregtechceu.gtceu.api.item.MetaMachineItem;
 import com.hepdd.gtmthings.common.item.AdvancedTerminalBehavior;
 import dev.emi.emi.api.recipe.EmiPlayerInventory;
 import dev.emi.emi.api.recipe.EmiRecipe;
@@ -14,13 +24,6 @@ import dev.emi.emi.api.recipe.handler.EmiRecipeHandler;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.screen.RecipeScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.material.Fluid;
-import org.gte.gtecore.integration.emi.multipage.MultiblockInfoEmiRecipe;
 
 import java.util.ArrayList;
 import java.util.List;

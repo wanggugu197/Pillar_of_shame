@@ -1,15 +1,16 @@
 package org.gte.gtecore.api.playerskill.experiencelevel;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
-
-import lombok.Getter;
-import net.minecraft.world.entity.player.Player;
 import org.gte.gtecore.api.playerskill.SkillType;
 import org.gte.gtecore.api.playerskill.data.AttributeRecord;
 import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
 import org.gte.gtecore.api.playerskill.event.normal.ExperienceAddedEvent;
 import org.gte.gtecore.api.playerskill.event.normal.LevelAddedEvent;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
+
+import lombok.Getter;
 
 import java.util.List;
 

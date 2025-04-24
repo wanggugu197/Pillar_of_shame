@@ -1,5 +1,7 @@
 package org.gte.gtecore.api.recipe;
 
+import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
+
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.capability.recipe.IRecipeCapabilityHolder;
 import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
@@ -11,7 +13,6 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import lombok.Getter;
-import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;

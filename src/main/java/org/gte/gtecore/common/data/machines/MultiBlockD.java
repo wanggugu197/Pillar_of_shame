@@ -26,10 +26,10 @@ import org.gte.gtecore.common.machine.multiblock.electric.space.SpaceElevatorMac
 import org.gte.gtecore.common.machine.multiblock.electric.space.SpaceElevatorModuleMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.space.SpaceProbeSurfaceReceptionMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.voidseries.INFFluidDrillMachine;
+import org.gte.gtecore.common.machine.multiblock.noenergy.GodForgeMachine;
 import org.gte.gtecore.common.machine.multiblock.noenergy.HarmonyMachine;
 import org.gte.gtecore.common.machine.multiblock.noenergy.HeatExchangerMachine;
 import org.gte.gtecore.common.machine.multiblock.noenergy.NeutronActivatorMachine;
-import org.gte.gtecore.common.machine.multiblock.noenergy.GodForgeMachine;
 import org.gte.gtecore.utils.*;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -317,7 +317,7 @@ public interface MultiBlockD {
     MultiblockMachineDefinition ASSEMBLER_MODULE = multiblock("assembler_module", "太空电梯组装模块", (holder) -> new SpaceElevatorModuleMachine(holder, true))
             .nonYAxisRotation()
             .recipe(GTERecipeTypes.ASSEMBLER_MODULE_RECIPES)
-            .tooltipsKey("gtocore.machine.resource_collection_module.tooltip.0")
+            .tooltipsKey("gtecore.machine.resource_collection_module.tooltip.0")
             .alwaysTryModifyRecipe(true)
             .block(GTEBlocks.SPACE_ELEVATOR_MECHANICAL_CASING)
             .pattern((definition) -> FactoryBlockPattern.start()
@@ -382,7 +382,7 @@ public interface MultiBlockD {
     MultiblockMachineDefinition LARGE_BLOCK_CONVERSION_ROOM = multiblock("large_block_conversion_room", "大型方块转换室", holder -> new BlockConversionRoomMachine(holder, true))
             .noneRotation()
             .recipe(GTERecipeTypes.BLOCK_CONVERSIONRECIPES)
-            .tooltipsKey("gtocore.machine.block_conversion_room.tooltip.0")
+            .tooltipsKey("gtecore.machine.block_conversion_room.tooltip.0")
             .tooltipsText("For each voltage tier above MV1, the number of blocks converted each time increases by 64, and will not repeat", "电压等级每高出MV1级，每次转换方块数量+64，且不会重复")
             .block(GTEBlocks.ALUMINIUM_BRONZE_CASING)
             .pattern(definition -> FactoryBlockPattern.start()
@@ -581,16 +581,16 @@ public interface MultiBlockD {
                             for (Entity entity : entities) {
                                 if (entity instanceof Player player) {
                                     if (Objects.equals(player.getArmorSlots().toString(), "[1 magnetohydrodynamically_constrained_star_matter_boots, 1 magnetohydrodynamically_constrained_star_matter_leggings, 1 magnetohydrodynamically_constrained_star_matter_chestplate, 1 magnetohydrodynamically_constrained_star_matter_helmet]")) {
-                                        ServerUtils.runCommandSilent(server, "execute in gtocore:create as " + entity.getName().getString() + " run tp 0 1 0");
+                                        ServerUtils.runCommandSilent(server, "execute in gtecore:create as " + entity.getName().getString() + " run tp 0 1 0");
                                     } else {
                                         player.displayClientMessage(Component.literal("你的装备无法适应目标维度的环境"), true);
                                     }
                                 }
-                                if (entity instanceof ItemEntity item && Objects.equals(ItemUtils.getId(item.getItem()), "gtocore:magnetohydrodynamically_constrained_star_matter_block")) {
+                                if (entity instanceof ItemEntity item && Objects.equals(ItemUtils.getId(item.getItem()), "gtecore:magnetohydrodynamically_constrained_star_matter_block")) {
                                     level.addFreshEntity(new ItemEntity(level, item.getX(), item.getY(), item.getZ(), new ItemStack(Blocks.COMMAND_BLOCK.asItem(), item.getItem().getCount())));
                                     item.discard();
                                 }
-                                if (entity instanceof ItemEntity item && Objects.equals(ItemUtils.getId(item.getItem()), "gtocore:magmatter_ingot") && item.getItem().getCount() >= 64) {
+                                if (entity instanceof ItemEntity item && Objects.equals(ItemUtils.getId(item.getItem()), "gtecore:magmatter_ingot") && item.getItem().getCount() >= 64) {
                                     level.addFreshEntity(new ItemEntity(level, item.getX(), item.getY(), item.getZ(), ChemicalHelper.get(TagPrefix.block, GTEMaterials.Magmatter, item.getItem().getCount() / 64)));
                                     item.discard();
                                 }
@@ -1250,7 +1250,7 @@ public interface MultiBlockD {
                     .recipeModifier((m, r) -> FusionReactorMachine.recipeModifier(m, r).apply(r))
                     .tooltipsKey("gtceu.machine.fusion_reactor.capacity", FusionReactorMachine.calculateEnergyStorageFactor(tier, 16) / 1000000L)
                     .tooltipsKey("gtceu.machine.fusion_reactor.overclocking")
-                    .tooltipsKey("gtocore.machine.%s_fusion_reactor.description".formatted(GTValues.VN[tier].toLowerCase(Locale.ROOT)))
+                    .tooltipsKey("gtecore.machine.%s_fusion_reactor.description".formatted(GTValues.VN[tier].toLowerCase(Locale.ROOT)))
                     .block(() -> FusionCasings.getCasingState(tier))
                     .pattern((definition) -> {
                         TraceabilityPredicate casing = blocks(FusionCasings.getCasingState(tier));
@@ -1335,7 +1335,7 @@ public interface MultiBlockD {
                     .allRotation()
                     .langValue("Fusion Reactor Computer MK %s".formatted(FormattingUtil.toRomanNumeral(tier - 5)))
                     .recipe(GTRecipeTypes.FUSION_RECIPES)
-                    .tooltipsKey("gtocore.machine.kuangbiao_one_giant_nuclear_fusion_reactor.tooltip.0")
+                    .tooltipsKey("gtecore.machine.kuangbiao_one_giant_nuclear_fusion_reactor.tooltip.0")
                     .tooltipsKey("gtceu.machine.fusion_reactor.capacity", FusionReactorMachine.calculateEnergyStorageFactor(tier, 16) / 1000000L)
                     .tooltipsKey("gtceu.machine.fusion_reactor.overclocking")
                     .parallelizableTooltips()

@@ -199,7 +199,7 @@ public final class TurbineMachine extends ElectricMultiblockMachine {
         long eut = Math.min(turbineMaxVoltage, recipe.parallels * EUt);
         energyPerTick = eut;
         recipe.duration = recipe.duration * rotorHolder.getTotalEfficiency() / 100;
-        recipe.tickOutputs.put(EURecipeCapability.CAP, List.of(ContentBuilder.builderEU(eut)));
+        recipe.tickOutputs.put(EURecipeCapability.CAP, List.of(ContentBuilder.builderLong(eut)));
         return recipe;
     }
 
@@ -224,7 +224,7 @@ public final class TurbineMachine extends ElectricMultiblockMachine {
                     }
                     highSpeedMode = pressed;
                 })
-                .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtecore.machine.mega_turbine.high_speed_mode").append("[").append(Component.translatable(pressed ? "gtocore.machine.on" : "gtocore.machine.off")).append("]"))));
+                .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtecore.machine.mega_turbine.high_speed_mode").append("[").append(Component.translatable(pressed ? "gtecore.machine.on" : "gtecore.machine.off")).append("]"))));
     }
 
     @Override

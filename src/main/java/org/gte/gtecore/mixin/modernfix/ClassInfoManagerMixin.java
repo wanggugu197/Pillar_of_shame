@@ -1,8 +1,10 @@
 package org.gte.gtecore.mixin.modernfix;
 
-import com.gregtechceu.gtceu.GTCEu;
-import org.embeddedt.modernfix.util.ClassInfoManager;
 import org.gte.gtecore.common.CommonProxy;
+
+import com.gregtechceu.gtceu.GTCEu;
+
+import org.embeddedt.modernfix.util.ClassInfoManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

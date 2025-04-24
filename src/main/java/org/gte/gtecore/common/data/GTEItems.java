@@ -1,12 +1,12 @@
 package org.gte.gtecore.common.data;
 
 import org.gte.gtecore.api.item.ToolTipsItem;
-import org.gte.gtecore.client.renderer.item.OrderItemProviderRenderer;
-import org.gte.gtecore.common.item.tools.GrassHarvesterBehaviour;
 import org.gte.gtecore.client.renderer.item.HaloItemRenderer;
+import org.gte.gtecore.client.renderer.item.OrderItemProviderRenderer;
 import org.gte.gtecore.common.cover.PowerAmplifierCover;
 import org.gte.gtecore.common.item.*;
 import org.gte.gtecore.common.item.armor.SpaceArmorComponentItem;
+import org.gte.gtecore.common.item.tools.GrassHarvesterBehaviour;
 import org.gte.gtecore.config.GTEConfig;
 import org.gte.gtecore.integration.ae2.InfinityCellItem;
 import org.gte.gtecore.utils.StringUtils;

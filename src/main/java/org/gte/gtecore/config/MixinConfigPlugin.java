@@ -1,6 +1,7 @@
 package org.gte.gtecore.config;
 
 import com.gregtechceu.gtceu.GTCEu;
+
 import com.lowdragmc.lowdraglib.core.mixins.MixinPluginShared;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;

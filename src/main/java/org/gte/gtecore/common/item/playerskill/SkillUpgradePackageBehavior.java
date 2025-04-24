@@ -1,6 +1,16 @@
 package org.gte.gtecore.common.item.playerskill;
 
+import org.gte.gtecore.api.GTEValues;
+import org.gte.gtecore.api.playerskill.SkillRegistry;
+import org.gte.gtecore.api.playerskill.SkillType;
+import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
+import org.gte.gtecore.api.playerskill.data.PlayerData;
+import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
+import org.gte.gtecore.api.playerskill.utils.UtilsAttribute;
+import org.gte.gtecore.api.playerskill.utils.UtilsData;
+
 import com.gregtechceu.gtceu.api.item.component.IInteractionItem;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -10,14 +20,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import org.gte.gtecore.api.GTEValues;
-import org.gte.gtecore.api.playerskill.SkillRegistry;
-import org.gte.gtecore.api.playerskill.SkillType;
-import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
-import org.gte.gtecore.api.playerskill.data.PlayerData;
-import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
-import org.gte.gtecore.api.playerskill.utils.UtilsAttribute;
-import org.gte.gtecore.api.playerskill.utils.UtilsData;
 
 public class SkillUpgradePackageBehavior implements IInteractionItem {
 

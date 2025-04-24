@@ -1,15 +1,18 @@
 package org.gte.gtecore.api.machine.mana.trait;
 
-import com.gregtechceu.gtceu.api.capability.recipe.IO;
-import com.gregtechceu.gtceu.api.machine.MetaMachine;
-import lombok.Getter;
-import lombok.Setter;
 import org.gte.gtecore.api.machine.mana.feature.IWirelessManaContainerHolder;
 import org.gte.gtecore.common.wireless.WirelessManaContainer;
 
-import javax.annotation.Nullable;
+import com.gregtechceu.gtceu.api.capability.recipe.IO;
+import com.gregtechceu.gtceu.api.machine.MetaMachine;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigInteger;
 import java.util.UUID;
+
+import javax.annotation.Nullable;
 
 @Setter
 @Getter

@@ -145,7 +145,7 @@ public class GTEMachineBuilder extends MachineBuilder<MachineDefinition> {
     }
 
     public GTEMachineBuilder tooltipsText(String en, String cn, Object... args) {
-        String key = "gtocore.machine." + name + ".tooltip." + tooltipsIndex;
+        String key = "gtecore.machine." + name + ".tooltip." + tooltipsIndex;
         if (TOOLTIPS_MAP != null) TOOLTIPS_MAP.put(key, new LangHandler.ENCN(en, cn));
         tooltipsKey(key, args);
         tooltipsIndex++;

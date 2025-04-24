@@ -1,12 +1,13 @@
 package org.gte.gtecore.api.playerskill.utils;
 
-import net.minecraft.server.TickTask;
-import net.minecraft.world.entity.player.Player;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.playerskill.SkillRegistry;
 import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
 import org.gte.gtecore.api.playerskill.data.PlayerData;
 import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
+
+import net.minecraft.server.TickTask;
+import net.minecraft.world.entity.player.Player;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -15,7 +16,7 @@ import java.util.UUID;
 public class UtilsAttribute {
 
     public static void applyModifiers(Player player, BasicExperienceLevel expLevel) {
-        removeAllGTOCoreExpModifiers(player);
+        removeAllGTECoreExpModifiers(player);
         expLevel.getAttributeModifiers().forEach(attribute -> Optional.ofNullable(player.getAttribute(attribute.attribute()))
                 .ifPresent(attr -> {
                     try {
@@ -26,7 +27,7 @@ public class UtilsAttribute {
                 }));
     }
 
-    public static void removeAllGTOCoreExpModifiers(Player player) {
+    public static void removeAllGTECoreExpModifiers(Player player) {
         for (var instance : player.getAttributes().getSyncableAttributes()) {
             SkillRegistry.SKILL_UUID.forEach(instance::removeModifier);
         }

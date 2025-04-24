@@ -48,16 +48,16 @@ public final class UtilsMessage {
         skillInfo = skillInfo.append(Component.translatable("gtecore.player_exp_status.level")
                 .withStyle(ChatFormatting.WHITE)
                 .append(Component.literal(basicExperienceLevel.getLevel() + " (" + GTEValues.VNFR[(int) basicExperienceLevel.getVoltage()] + ")" + " / " +
-                                basicExperienceLevel.getMaxLevel() + " (" + GTEValues.VNFR[(int) basicExperienceLevel.getMaxVoltage()] + ")" +
-                                Component.translatable("gtecore.player_exp_status.level_max").getString())
+                        basicExperienceLevel.getMaxLevel() + " (" + GTEValues.VNFR[(int) basicExperienceLevel.getMaxVoltage()] + ")" +
+                        Component.translatable("gtecore.player_exp_status.level_max").getString())
                         .withStyle(ChatFormatting.YELLOW)));
 
         // 添加经验信息
         skillInfo = skillInfo.append(Component.translatable("gtecore.player_exp_status.experience")
                 .withStyle(ChatFormatting.WHITE)
                 .append(Component.literal(basicExperienceLevel.getExperience() + " / " +
-                                basicExperienceLevel.getExperienceForNextLevel() +
-                                Component.translatable("gtecore.player_exp_status.experience_next").getString())
+                        basicExperienceLevel.getExperienceForNextLevel() +
+                        Component.translatable("gtecore.player_exp_status.experience_next").getString())
                         .withStyle(ChatFormatting.YELLOW)));
 
         // 添加进度信息

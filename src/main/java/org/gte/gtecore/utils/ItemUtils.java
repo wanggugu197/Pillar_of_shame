@@ -61,10 +61,10 @@ public final class ItemUtils {
     }
 
     public static ResourceLocation getIdLocation(Block block) {
-        return ((IItem) block.asItem()).gtocore$getIdLocation();
+        return ((IItem) block.asItem()).gtecore$getIdLocation();
     }
 
     public static ResourceLocation getIdLocation(Item item) {
-        return ((IItem) item).gtocore$getIdLocation();
+        return ((IItem) item).gtecore$getIdLocation();
     }
 }

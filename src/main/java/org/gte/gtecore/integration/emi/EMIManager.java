@@ -1,5 +1,9 @@
 package org.gte.gtecore.integration.emi;
 
+import org.gte.gtecore.common.data.GTERecipes;
+
+import net.minecraft.resources.ResourceLocation;
+
 import com.google.common.collect.Lists;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
@@ -11,14 +15,13 @@ import dev.emi.emi.registry.EmiStackList;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenCustomHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import net.minecraft.resources.ResourceLocation;
-import org.gte.gtecore.common.data.GTERecipes;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import javax.annotation.Nullable;
 
 public final class EMIManager implements EmiRecipeManager {
 

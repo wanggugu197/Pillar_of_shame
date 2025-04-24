@@ -1,7 +1,9 @@
 package org.gte.gtecore.api.machine.trait;
 
-import appeng.api.networking.IGrid;
-import appeng.api.stacks.AEFluidKey;
+import org.gte.gtecore.api.machine.IMEHatchPart;
+import org.gte.gtecore.integration.ae2.KeyMap;
+import org.gte.gtecore.utils.FluidUtils;
+
 import com.gregtechceu.gtceu.api.capability.IControllable;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
@@ -11,12 +13,13 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
 import com.gregtechceu.gtceu.api.transfer.fluid.CustomFluidTank;
 import com.gregtechceu.gtceu.integration.ae2.machine.feature.IGridConnectedMachine;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import org.gte.gtecore.api.machine.IMEHatchPart;
-import org.gte.gtecore.integration.ae2.KeyMap;
-import org.gte.gtecore.utils.FluidUtils;
+
+import appeng.api.networking.IGrid;
+import appeng.api.stacks.AEFluidKey;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -68,7 +71,8 @@ public final class InaccessibleInfiniteTank extends NotifiableFluidTank {
 
     @Override
     public List<FluidIngredient> handleRecipeInner(IO io, GTRecipe recipe, List<FluidIngredient> left, boolean simulate) {
-        if (!simulate && io == IO.OUT) {
+        if (io == IO.OUT) {
+            if (simulate) return null;
             for (FluidIngredient ingredient : left) {
                 if (ingredient.isEmpty()) continue;
                 Fluid fluid = FluidUtils.getFirst(ingredient);
@@ -78,7 +82,7 @@ public final class InaccessibleInfiniteTank extends NotifiableFluidTank {
             }
             return null;
         }
-        return null;
+        return left;
     }
 
     @Override

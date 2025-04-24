@@ -1,5 +1,8 @@
 package org.gte.gtecore.common.machine.trait;
 
+import org.gte.gtecore.common.machine.multiblock.part.ae.MEPatternBufferPartMachine;
+import org.gte.gtecore.common.machine.multiblock.part.ae.MEPatternBufferProxyPartMachine;
+
 import com.gregtechceu.gtceu.api.capability.recipe.*;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.trait.IRecipeHandlerTrait;
@@ -7,11 +10,11 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableRecipeHandlerTrait;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeHandlerList;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidIngredient;
-import com.gregtechceu.gtceu.integration.ae2.machine.MEPatternBufferProxyPartMachine;
+
+import net.minecraft.world.item.crafting.Ingredient;
+
 import com.lowdragmc.lowdraglib.syncdata.ISubscription;
 import lombok.Getter;
-import net.minecraft.world.item.crafting.Ingredient;
-import org.gte.gtecore.common.machine.multiblock.part.ae.MEPatternBufferPartMachine;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

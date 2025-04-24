@@ -1,11 +1,12 @@
 package org.gte.gtecore.integration.emi;
 
+import net.minecraft.world.inventory.Slot;
+
 import com.lowdragmc.lowdraglib.gui.modular.ModularUIContainer;
 import com.lowdragmc.lowdraglib.gui.widget.SlotWidget;
 import com.lowdragmc.lowdraglib.jei.IngredientIO;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.handler.StandardRecipeHandler;
-import net.minecraft.world.inventory.Slot;
 
 import java.util.List;
 

@@ -1,0 +1,14 @@
+{
+  "parent": "gtceu:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "gtecore:block/power_module/a4",
+    "bot_up": "gtecore:block/module",
+    "bot_down": "gtecore:block/module",
+    "top_up": "gtceu:block/casings/fusion/fusion_casing_bloom",
+    "top_down": "gtceu:block/casings/fusion/fusion_casing_bloom",
+    "top_north": "gtecore:block/power_module/glow",
+    "top_east": "gtecore:block/power_module/glow",
+    "top_south": "gtecore:block/power_module/glow",
+    "top_west": "gtecore:block/power_module/glow"
+  }
+}

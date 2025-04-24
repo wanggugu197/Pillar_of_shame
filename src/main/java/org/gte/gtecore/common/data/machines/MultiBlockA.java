@@ -7,13 +7,13 @@ import org.gte.gtecore.api.machine.part.GTEPartAbility;
 import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.gte.gtecore.api.pattern.GTEPredicates;
 import org.gte.gtecore.common.data.*;
-import org.gte.gtecore.common.machine.multiblock.electric.StellarForgeMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.FishingGroundMachine;
+import org.gte.gtecore.common.machine.multiblock.electric.StellarForgeMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.gcym.GCYMMultiblockMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.voidseries.VoidFluidDrillingRigMachine;
 import org.gte.gtecore.common.machine.multiblock.electric.voidseries.VoidMinerMachine;
-import org.gte.gtecore.common.machine.multiblock.steam.*;
 import org.gte.gtecore.common.machine.multiblock.noenergy.AdvancedPrimitiveBlastFurnaceMachine;
+import org.gte.gtecore.common.machine.multiblock.steam.*;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
@@ -2151,10 +2151,10 @@ public interface MultiBlockA {
             .recipe(GTERecipeTypes.VACUUM_DRYING_RECIPES)
             .recipe(GTERecipeTypes.DEHYDRATOR_RECIPES)
             .tooltipsKey("gtceu.machine.electric_blast_furnace.tooltip.2")
-            .tooltipsKey("gtocore.machine.recipe.run", Component.translatable("gtceu.vacuum_drying"))
+            .tooltipsKey("gtecore.machine.recipe.run", Component.translatable("gtceu.vacuum_drying"))
             .tooltipsKey("gtceu.machine.electric_blast_furnace.tooltip.0")
             .tooltipsKey("gtceu.machine.electric_blast_furnace.tooltip.1")
-            .tooltipsKey("gtocore.machine.recipe.run", Component.translatable("gtceu.dehydrator"))
+            .tooltipsKey("gtecore.machine.recipe.run", Component.translatable("gtceu.dehydrator"))
             .coilParallelTooltips()
             .recipeModifier((m, r) -> {
                 if (m instanceof CoilCustomParallelMultiblockMachine machine) {
@@ -2363,7 +2363,7 @@ public interface MultiBlockA {
     MultiblockMachineDefinition ADVANCED_INTEGRATED_ORE_PROCESSOR = multiblock("advanced_integrated_ore_processor", "进阶集成矿石处理厂", CrossRecipeMultiblockMachine.createParallel(false, false, m -> Integer.MAX_VALUE - 1))
             .nonYAxisRotation()
             .recipe(GTERecipeTypes.INTEGRATED_ORE_PROCESSOR)
-            .tooltipsKey("gtocore.machine.integrated_ore_processor.tooltip.0")
+            .tooltipsKey("gtecore.machine.integrated_ore_processor.tooltip.0")
             .tooltipsKey("gtceu.universal.tooltip.parallel", Integer.MAX_VALUE - 1)
             .customTooltipsBuilder(true, true, true)
             .block(GTEBlocks.DIMENSION_INJECTION_CASING)

@@ -1,15 +1,18 @@
 package org.gte.gtecore.integration.emi.oreprocessing;
 
+import org.gte.gtecore.GTECore;
+
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Items;
+
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Items;
-import org.gte.gtecore.GTECore;
 
 public class OreProcessingEmiCategory extends EmiRecipeCategory {
 

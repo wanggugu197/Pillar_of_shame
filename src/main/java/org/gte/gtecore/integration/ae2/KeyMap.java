@@ -1,10 +1,12 @@
 package org.gte.gtecore.integration.ae2;
 
-import appeng.api.stacks.AEKey;
 import com.gregtechceu.gtceu.integration.ae2.utils.KeyStorage;
+
+import net.minecraft.nbt.ListTag;
+
+import appeng.api.stacks.AEKey;
 import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import lombok.Getter;
-import net.minecraft.nbt.ListTag;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;

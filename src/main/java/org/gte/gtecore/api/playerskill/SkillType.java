@@ -1,14 +1,16 @@
 package org.gte.gtecore.api.playerskill;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Singular;
-import net.minecraft.network.chat.Component;
 import org.gte.gtecore.api.playerskill.data.AttributeRecord;
 import org.gte.gtecore.api.playerskill.data.PlayerData;
 import org.gte.gtecore.api.playerskill.event.SkillEvent;
 import org.gte.gtecore.api.playerskill.eventhandler.SkillEventHandler;
 import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
+
+import net.minecraft.network.chat.Component;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Singular;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

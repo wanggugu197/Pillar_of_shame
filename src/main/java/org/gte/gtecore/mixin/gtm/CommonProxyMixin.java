@@ -1,5 +1,10 @@
 package org.gte.gtecore.mixin.gtm;
 
+import org.gte.gtecore.api.recipe.FastSizedIngredient;
+import org.gte.gtecore.common.data.GTERecipes;
+import org.gte.gtecore.data.Data;
+import org.gte.gtecore.data.loot.DungeonLoot;
+
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.recipe.ingredient.FluidContainerIngredient;
@@ -10,15 +15,13 @@ import com.gregtechceu.gtceu.common.CommonProxy;
 import com.gregtechceu.gtceu.data.loot.DungeonLootLoader;
 import com.gregtechceu.gtceu.data.pack.GTDynamicDataPack;
 import com.gregtechceu.gtceu.data.pack.GTPackSource;
+
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import org.gte.gtecore.api.recipe.FastSizedIngredient;
-import org.gte.gtecore.common.data.GTERecipes;
-import org.gte.gtecore.data.Data;
-import org.gte.gtecore.data.loot.DungeonLoot;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;

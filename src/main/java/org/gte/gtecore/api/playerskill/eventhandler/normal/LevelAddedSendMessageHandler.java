@@ -1,12 +1,13 @@
 package org.gte.gtecore.api.playerskill.eventhandler.normal;
 
-import net.minecraft.network.chat.Component;
 import org.gte.gtecore.api.playerskill.SkillRegistry;
 import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
 import org.gte.gtecore.api.playerskill.data.PlayerData;
 import org.gte.gtecore.api.playerskill.event.SkillEvent;
 import org.gte.gtecore.api.playerskill.event.normal.LevelAddedEvent;
 import org.gte.gtecore.api.playerskill.eventhandler.SkillEventHandler;
+
+import net.minecraft.network.chat.Component;
 
 import java.util.Objects;
 

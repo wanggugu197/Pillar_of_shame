@@ -1,12 +1,17 @@
 package org.gte.gtecore.utils.register;
 
+import net.minecraft.util.RandomSource;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.GTEValues;
 import org.gte.gtecore.api.data.chemical.material.GTEMaterial;
 import org.gte.gtecore.api.data.tag.GTETagPrefix;
 import org.gte.gtecore.api.item.ToolTipsItem;
+import org.gte.gtecore.api.playerskill.SkillType;
+import org.gte.gtecore.api.playerskill.utils.UtilsTintableModel;
 import org.gte.gtecore.common.data.GTECovers;
 import org.gte.gtecore.common.item.*;
+import org.gte.gtecore.common.item.playerskill.MysteriousBoostPotionBehaviour;
+import org.gte.gtecore.utils.ColorUtils;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
@@ -46,16 +51,15 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
+import org.gte.gtecore.common.item.playerskill.SkillUpgradePackageBehavior;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.common.data.GTItems.attach;
+import static org.gte.gtecore.api.playerskill.SkillRegistry.*;
 import static org.gte.gtecore.api.registries.GTERegistration.REGISTRATE;
 import static org.gte.gtecore.common.data.GTEItems.*;
 
@@ -192,6 +196,97 @@ public final class ItemRegisterUtils {
                     .tag(CustomTags.CIRCUITS_ARRAY[tier])
                     .register();
             entries[tier] = register;
+        }
+        return entries;
+    }
+
+    public static ItemEntry<ComponentItem>[] registerSkillUpgradePackage(SkillType skillType) {
+        ItemEntry[] entries = new ItemEntry[GTValues.TIER_COUNT];
+        if (!skillType.generateUpgradePackage) {
+            GTECore.LOGGER.error("SkillType {} does not generate upgrade package , but it was registered incorrectly, please use upgradePackageBonus", skillType.getId());
+            return entries;
+        }
+        Map<SkillType, int[]> baseColorMap = Map.of(
+                STRENGTH, new int[] { 0Xff0000, 0xff6b6b }, // 红色
+                LIFE_INTENSITY, new int[] { 0x4fe82c, 0x9cfa87 }, // 绿色
+                PHYSIQUE, new int[] { 0x6149fc, 0xa091ff } // 蓝色
+        );
+        int[] baseColor = baseColorMap.get(skillType);
+        int[] stepGradient = ColorUtils.generateStepGradient(baseColor[0], baseColor[1], 70, 4);
+        for (int tier : GTValues.ALL_TIERS) {
+            entries[tier] = item(skillType.getId().toLowerCase() + "_skill_upgrade_package_" + GTValues.VN[tier].toLowerCase(),
+                    GTEValues.VNFR[tier] + skillType.getChineseName() + " 能力提升包", ComponentItem::create)
+                    .model((ctx, prov) -> UtilsTintableModel.createTintableModel(ctx, prov,
+                            "item/skill/normal/normal_border",
+                            "item/skill/normal/tier_border",
+                            "item/skill/liquid_bottle/bottle",
+                            "item/skill/liquid_bottle/liquid1",
+                            "item/skill/liquid_bottle/liquid2",
+                            "item/skill/liquid_bottle/liquid3",
+                            "item/skill/liquid_bottle/liquid4"))
+                    .tag(TagUtil.optionalTag(BuiltInRegistries.ITEM, GTECore.id("skill_upgrade_package")))
+                    .tag(TagUtil.optionalTag(BuiltInRegistries.ITEM, GTECore.id("skill_upgrade_package_" + skillType.getId().toLowerCase())))
+                    .onRegister(attach(new SkillUpgradePackageBehavior(tier, skillType)))
+                    .color(() -> () -> (stack, tintIndex) -> {
+                        if (tintIndex == 1) { // tier_border
+                            float light_factor = 0.3f + ((tier + 1) * (0.7f / GTValues.TIER_COUNT));
+                            int a = 0xFF;
+                            int r = Math.min(255, (int) ((baseColor[0] >> 16 & 0xFF) * light_factor));
+                            int g = Math.min(255, (int) ((baseColor[0] & 0xFF) * light_factor));
+                            int b = Math.min(255, (int) ((baseColor[0]) * light_factor));
+                            return (a << 24) | (r << 16) | (g << 8) | b;
+                        } else {
+                            return switch (tintIndex) {
+                                case 3 -> stepGradient[0];
+                                case 4 -> stepGradient[1];
+                                case 5 -> stepGradient[2];
+                                case 6 -> stepGradient[3];
+                                default -> -1;
+                            };
+                        }
+                    })
+                    .register();
+        }
+        return entries;
+    }
+
+    public static ItemEntry<ComponentItem>[] registerMysteriousBoostDrink() {
+        ItemEntry[] entries = new ItemEntry[GTValues.TIER_COUNT];
+        for (int tier : GTValues.ALL_TIERS) {
+            entries[tier] = item("gto_overseer_coke_" + GTValues.VN[tier].toLowerCase(),
+                    "GTO牌 " + GTEValues.VNFR[tier] + " 监工可乐", ComponentItem::create)
+                    .model((ctx, prov) -> UtilsTintableModel.createTintableModel(ctx, prov,
+                            "item/skill/normal/normal_border",
+                            "item/skill/normal/tier_border",
+                            "item/skill/mysterious_boost_medicine/0_bottle",
+                            "item/skill/mysterious_boost_medicine/1_face",
+                            "item/skill/mysterious_boost_medicine/2_liquid1",
+                            "item/skill/mysterious_boost_medicine/3_liquid2",
+                            "item/skill/mysterious_boost_medicine/4_liquid3",
+                            "item/skill/mysterious_boost_medicine/5_gtologo",
+                            "item/skill/mysterious_boost_medicine/6_gtologobase",
+                            "item/skill/mysterious_boost_medicine/7_straw"))
+                    .color(() -> () -> (stack, tintIndex) -> {
+                        if (tintIndex == 1) { // tier_border
+                            float light_factor = 0.3f + ((tier + 1) * (0.7f / GTValues.TIER_COUNT));
+                            int a = 0xFF;
+                            int r = Math.min(255, (int) ((0x6149fc >> 16 & 0xFF) * light_factor));
+                            int g = Math.min(255, (int) ((0x6149fc & 0xFF) * light_factor));
+                            int b = Math.min(255, (int) ((0x6149fc) * light_factor));
+                            return (a << 24) | (r << 16) | (g << 8) | b;
+                        } else {
+                            RandomSource rng = GTValues.RNG;
+                            int[] stepGradient = ColorUtils.generateStepGradient(rng.nextInt(0x1000000), rng.nextInt(0x1000000), 70, 3);
+                            return switch (tintIndex) {
+                                case 4 -> stepGradient[0];
+                                case 5 -> stepGradient[1];
+                                case 6 -> stepGradient[2];
+                                default -> -1;
+                            };
+                        }
+                    })
+                    .onRegister(attach(new MysteriousBoostPotionBehaviour(tier)))
+                    .register();
         }
         return entries;
     }

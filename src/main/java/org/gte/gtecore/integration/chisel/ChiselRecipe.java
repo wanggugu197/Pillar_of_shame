@@ -1,5 +1,12 @@
 package org.gte.gtecore.integration.chisel;
 
+import org.gte.gtecore.common.data.machines.MultiBlockG;
+
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+
 import com.periut.chisel.Chisel;
 import com.periut.chisel.block.ChiselGroupLookup;
 import dev.emi.emi.api.EmiRegistry;
@@ -8,11 +15,6 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import org.gte.gtecore.common.data.machines.MultiBlockG;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;

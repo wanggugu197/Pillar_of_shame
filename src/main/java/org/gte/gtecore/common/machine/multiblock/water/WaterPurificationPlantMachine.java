@@ -125,7 +125,7 @@ public final class WaterPurificationPlantMachine extends ElectricMultiblockMachi
     public void addDisplayText(@NotNull List<Component> textList) {
         super.addDisplayText(textList);
         if (!isFormed()) return;
-        textList.add(Component.translatable("gtocore.machine.water_purification_plant.bind"));
+        textList.add(Component.translatable("gtecore.machine.water_purification_plant.bind"));
         for (Map.Entry<WaterPurificationUnitMachine, Boolean> entry : waterPurificationUnitMachineMap.entrySet()) {
             MutableComponent component = Component.translatable(entry.getKey().getBlockState().getBlock().getDescriptionId()).append(" ");
             if (entry.getValue()) {

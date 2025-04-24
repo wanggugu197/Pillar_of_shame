@@ -1,10 +1,5 @@
 package org.gte.gtecore.mixin.gtm.api;
 
-import com.gregtechceu.gtceu.api.addon.AddonFinder;
-import com.gregtechceu.gtceu.api.addon.IGTAddon;
-import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.BedrockOreDefinition;
-import com.gregtechceu.gtceu.api.registry.GTRegistries;
-import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.capability.recipe.GTERecipeCapabilities;
 import org.gte.gtecore.api.data.GTEWorldGenLayers;
@@ -12,6 +7,13 @@ import org.gte.gtecore.api.data.tag.GTETagPrefix;
 import org.gte.gtecore.api.registries.GTERegistration;
 import org.gte.gtecore.common.data.*;
 import org.gte.gtecore.data.Datagen;
+
+import com.gregtechceu.gtceu.api.addon.AddonFinder;
+import com.gregtechceu.gtceu.api.addon.IGTAddon;
+import com.gregtechceu.gtceu.api.data.worldgen.bedrockore.BedrockOreDefinition;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;

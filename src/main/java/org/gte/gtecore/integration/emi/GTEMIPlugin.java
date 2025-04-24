@@ -1,10 +1,8 @@
 package org.gte.gtecore.integration.emi;
 
-import appeng.api.stacks.AEFluidKey;
-import appeng.api.stacks.AEItemKey;
-import appeng.api.stacks.AEKey;
-import appeng.api.stacks.GenericStack;
-import appeng.menu.me.items.PatternEncodingTermMenu;
+import org.gte.gtecore.integration.chisel.ChiselRecipe;
+import org.gte.gtecore.integration.emi.oreprocessing.OreProcessingEmiCategory;
+
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.recipe.category.GTRecipeCategory;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
@@ -18,6 +16,17 @@ import com.gregtechceu.gtceu.integration.emi.orevein.GTBedrockFluidEmiCategory;
 import com.gregtechceu.gtceu.integration.emi.orevein.GTOreVeinEmiCategory;
 import com.gregtechceu.gtceu.integration.emi.recipe.GTEmiRecipeHandler;
 import com.gregtechceu.gtceu.integration.emi.recipe.GTRecipeEMICategory;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraftforge.fluids.FluidStack;
+
+import appeng.api.stacks.AEFluidKey;
+import appeng.api.stacks.AEItemKey;
+import appeng.api.stacks.AEKey;
+import appeng.api.stacks.GenericStack;
+import appeng.menu.me.items.PatternEncodingTermMenu;
 import com.lowdragmc.lowdraglib.LDLib;
 import com.lowdragmc.lowdraglib.emi.EMIPlugin;
 import com.lowdragmc.lowdraglib.gui.modular.ModularUIContainer;
@@ -30,12 +39,6 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.stack.*;
 import dev.emi.emi.registry.EmiPluginContainer;
 import io.github.prismwork.emitrades.EMITradesPlugin;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraftforge.fluids.FluidStack;
-import org.gte.gtecore.integration.chisel.ChiselRecipe;
-import org.gte.gtecore.integration.emi.oreprocessing.OreProcessingEmiCategory;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.client.integration.emi.BotaniaEmiPlugin;
 

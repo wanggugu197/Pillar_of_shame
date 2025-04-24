@@ -3,6 +3,7 @@ package org.gte.gtecore.data.loot;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.data.loot.ChestGenHooks;
+
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
 public interface DungeonLoot {

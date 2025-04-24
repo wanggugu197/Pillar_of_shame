@@ -26,7 +26,7 @@ public enum IdleReason {
     private final String cn;
 
     IdleReason(String key, String en, String cn) {
-        this.key = key == null ? "gtocore.idle_reason" + this.name().toLowerCase() : key;
+        this.key = key == null ? "gtecore.idle_reason" + this.name().toLowerCase() : key;
         this.en = en;
         this.cn = cn;
     }

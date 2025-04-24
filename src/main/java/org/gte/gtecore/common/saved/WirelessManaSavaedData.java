@@ -1,12 +1,14 @@
 package org.gte.gtecore.common.saved;
 
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import lombok.NoArgsConstructor;
+import org.gte.gtecore.common.wireless.WirelessManaContainer;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.saveddata.SavedData;
-import org.gte.gtecore.common.wireless.WirelessManaContainer;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;

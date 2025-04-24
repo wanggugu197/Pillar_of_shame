@@ -82,7 +82,7 @@ public class Administration {
     }
 
     private static LiteralArgumentBuilder<CommandSourceStack> createSkillCommand(
-            String commandName, SkillCommandAction executor) {
+                                                                                 String commandName, SkillCommandAction executor) {
         return Commands.literal(commandName)
                 .then(Commands.argument("player", EntityArgument.player())
                         .then(Commands.argument("experienceType", StringArgumentType.word())

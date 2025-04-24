@@ -1,9 +1,10 @@
 package org.gte.gtecore.common.wireless;
 
+import org.gte.gtecore.common.saved.WirelessManaSavaedData;
+
 import com.hepdd.gtmthings.utils.TeamUtil;
 import lombok.Getter;
 import lombok.Setter;
-import org.gte.gtecore.common.saved.WirelessManaSavaedData;
 
 import java.math.BigInteger;
 import java.util.UUID;

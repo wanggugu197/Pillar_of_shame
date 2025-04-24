@@ -221,19 +221,19 @@ public class METagFilterStockBusPartMachine extends MEInputBusPartMachine implem
         public Widget createConfigurator() {
             return new WidgetGroup(0, 0, 132, 100)
                     .addWidget(new LabelWidget(9, 4,
-                            () -> "gtocore.machine.tag_filter.tag_white_list"))
+                            () -> "gtecore.machine.tag_filter.tag_white_list"))
                     .addWidget(new TextFieldWidget(9, 16, 114, 16,
                             () -> tagWhite,
                             v -> tagWhite = v))
                     .addWidget(new LabelWidget(9, 36,
-                            () -> "gtocore.machine.tag_filter.tag_black_list"))
+                            () -> "gtecore.machine.tag_filter.tag_black_list"))
                     .addWidget(new TextFieldWidget(9, 48, 114, 16,
                             () -> tagBlack,
                             v -> tagBlack = v))
                     .addWidget(new LabelWidget(0, 68,
-                            () -> "gtocore.machine.tag_filter.tooltip.0"))
+                            () -> "gtecore.machine.tag_filter.tooltip.0"))
                     .addWidget(new LabelWidget(0, 84,
-                            () -> "gtocore.machine.tag_filter.tooltip.1"));
+                            () -> "gtecore.machine.tag_filter.tooltip.1"));
         }
     }
 

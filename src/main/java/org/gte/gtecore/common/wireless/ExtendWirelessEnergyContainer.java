@@ -1,17 +1,17 @@
 package org.gte.gtecore.common.wireless;
 
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
-
 import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+
 import net.minecraft.core.GlobalPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
 import com.hepdd.gtmthings.api.misc.WirelessEnergyContainer;
 import com.hepdd.gtmthings.data.WirelessEnergySavaedData;
 import com.hepdd.gtmthings.utils.BigIntegerUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lombok.Getter;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.math.BigInteger;

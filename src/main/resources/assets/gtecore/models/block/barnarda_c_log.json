@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "gtecore:block/barnardac_log_top",
+    "up": "gtecore:block/barnardac_log_top",
+    "north": "gtecore:block/barnardac_log_side",
+    "east": "gtecore:block/barnardac_log_side",
+    "south": "gtecore:block/barnardac_log_side",
+    "west": "gtecore:block/barnardac_log_side",
+    "particle": "gtecore:block/barnardac_log_top"
+  },
+  "render_type": "solid"
+}

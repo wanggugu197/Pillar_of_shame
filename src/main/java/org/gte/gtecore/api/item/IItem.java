@@ -7,5 +7,5 @@ import org.jetbrains.annotations.NotNull;
 public interface IItem {
 
     @NotNull
-    ResourceLocation gtocore$getIdLocation();
+    ResourceLocation gtecore$getIdLocation();
 }

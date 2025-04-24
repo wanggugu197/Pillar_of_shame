@@ -46,6 +46,6 @@ public final class ThreadHatchPartMachine extends AmountConfigurationHatchPartMa
                 GuiTextures.BUTTON_WORKING_ENABLE.getSubTexture(0, 0.5, 1, 0.5),
                 GuiTextures.BUTTON_WORKING_ENABLE.getSubTexture(0, 0, 1, 0.5),
                 () -> repeatedRecipes, (clickData, pressed) -> repeatedRecipes = pressed)
-                .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtocore.machine.repeated_recipes", Component.translatable(pressed ? "gtocore.machine.on" : "gtocore.machine.off")))));
+                .setTooltipsSupplier(pressed -> List.of(Component.translatable("gtecore.machine.repeated_recipes", Component.translatable(pressed ? "gtecore.machine.on" : "gtecore.machine.off")))));
     }
 }

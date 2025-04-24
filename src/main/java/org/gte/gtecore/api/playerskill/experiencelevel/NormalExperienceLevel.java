@@ -1,8 +1,9 @@
 package org.gte.gtecore.api.playerskill.experiencelevel;
 
-import net.minecraft.world.entity.player.Player;
 import org.gte.gtecore.api.playerskill.SkillType;
 import org.gte.gtecore.api.playerskill.experiencelevel.special.LifeIntensityExperienceLevel;
+
+import net.minecraft.world.entity.player.Player;
 
 public abstract class NormalExperienceLevel extends BasicExperienceLevel {
 

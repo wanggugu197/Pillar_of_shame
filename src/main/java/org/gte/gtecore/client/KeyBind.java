@@ -1,9 +1,11 @@
 package org.gte.gtecore.client;
 
+import org.gte.gtecore.common.network.ClientMessage;
+
+import net.minecraft.client.KeyMapping;
+
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
-import net.minecraft.client.KeyMapping;
-import org.gte.gtecore.common.network.ClientMessage;
 
 final class KeyBind {
 

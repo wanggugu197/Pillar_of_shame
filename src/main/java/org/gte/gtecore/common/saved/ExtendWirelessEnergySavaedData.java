@@ -1,12 +1,14 @@
 package org.gte.gtecore.common.saved;
 
-import com.hepdd.gtmthings.api.misc.WirelessEnergyContainer;
-import com.hepdd.gtmthings.data.WirelessEnergySavaedData;
-import net.minecraft.core.GlobalPos;
-import net.minecraft.nbt.CompoundTag;
 import org.gte.gtecore.api.GTEValues;
 import org.gte.gtecore.common.wireless.ExtendWirelessEnergyContainer;
 import org.gte.gtecore.utils.GTEUtils;
+
+import net.minecraft.core.GlobalPos;
+import net.minecraft.nbt.CompoundTag;
+
+import com.hepdd.gtmthings.api.misc.WirelessEnergyContainer;
+import com.hepdd.gtmthings.data.WirelessEnergySavaedData;
 
 import java.math.BigInteger;
 import java.util.Objects;

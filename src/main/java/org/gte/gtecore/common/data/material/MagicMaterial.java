@@ -1,10 +1,12 @@
 package org.gte.gtecore.common.data.material;
 
-import com.gregtechceu.gtceu.common.data.GTMaterials;
-import net.minecraft.ChatFormatting;
-import net.minecraft.world.item.Rarity;
 import org.gte.gtecore.api.data.chemical.material.info.GTEMaterialFlags;
 import org.gte.gtecore.common.data.GTEElements;
+
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.world.item.Rarity;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;

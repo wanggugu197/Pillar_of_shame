@@ -1,6 +1,5 @@
 package org.gte.gtecore.api.recipe;
 
-import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.capability.recipe.ManaRecipeCapability;
 import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
@@ -11,6 +10,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.capability.recipe.*;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.gui.SteamTexture;
+import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.chance.boost.ChanceBoostFunction;

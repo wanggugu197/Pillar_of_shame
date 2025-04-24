@@ -4,7 +4,6 @@ import org.gte.gtecore.api.playerskill.data.ExperienceSystemManager;
 import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 import it.unimi.dsi.fastutil.objects.Object2LongMap;

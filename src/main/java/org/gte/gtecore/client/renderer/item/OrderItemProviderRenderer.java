@@ -1,5 +1,7 @@
 package org.gte.gtecore.client.renderer.item;
 
+import org.gte.gtecore.common.item.OrderItem;
+
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -10,7 +12,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import com.hepdd.gtmthings.client.ClientUtil;
 import com.lowdragmc.lowdraglib.client.renderer.IRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.gte.gtecore.common.item.OrderItem;
 
 public class OrderItemProviderRenderer implements IRenderer {
 

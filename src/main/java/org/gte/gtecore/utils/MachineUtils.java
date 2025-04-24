@@ -2,7 +2,7 @@ package org.gte.gtecore.utils;
 
 import org.gte.gtecore.api.machine.feature.multiblock.IParallelMachine;
 import org.gte.gtecore.api.machine.multiblock.CrossRecipeMultiblockMachine;
-import org.gte.gtecore.api.machine.multiblock.ElectricMultiblockMachine;
+import org.gte.gtecore.api.machine.trait.IEnhancedRecipeLogic;
 import org.gte.gtecore.api.recipe.GTERecipeBuilder;
 import org.gte.gtecore.api.recipe.RecipeRunnerHelper;
 
@@ -13,6 +13,7 @@ import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.feature.IRecipeLogicMachine;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockDisplayText;
+import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 import com.gregtechceu.gtceu.api.pattern.BlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
@@ -151,7 +152,7 @@ public final class MachineUtils {
         } else {
             numParallels = getHatchParallel(machine);
         }
-        if (machine instanceof ElectricMultiblockMachine electricMultiblockMachine) {
+        if (machine instanceof WorkableElectricMultiblockMachine electricMultiblockMachine) {
             builder.addEnergyUsageLine(electricMultiblockMachine.getEnergyContainer()).addEnergyTierLine(electricMultiblockMachine.getTier());
             if (electricMultiblockMachine instanceof CrossRecipeMultiblockMachine crossRecipeMultiblockMachine) {
                 numThread = crossRecipeMultiblockMachine.getThread();
@@ -167,6 +168,11 @@ public final class MachineUtils {
         }
         builder.addCustom(customConsumer)
                 .addCustom(text -> machine.getDefinition().getAdditionalDisplay().accept(machine, text))
+                .addCustom(text -> {
+                    if (machine.getRecipeLogic().isIdle() && machine.getRecipeLogic() instanceof IEnhancedRecipeLogic enhancedRecipeLogic && enhancedRecipeLogic.gTECore$getIdleReason() != null) {
+                        textList.add(enhancedRecipeLogic.gTECore$getIdleReason().copy().withStyle(ChatFormatting.GRAY));
+                    }
+                })
                 .addWorkingStatusLine()
                 .addProgressLine(machine.recipeLogic.getProgress(), machine.recipeLogic.getMaxProgress(), machine.recipeLogic.getProgressPercent())
                 .addOutputLines(machine.recipeLogic.getLastRecipe());
@@ -315,17 +321,17 @@ public final class MachineUtils {
 
     public static boolean inputItem(IRecipeCapabilityHolder machine, ItemStack... item) {
         List<?> contentList = toIngredient(item);
-        return RecipeRunnerHelper.handleRecipe(machine, IO.IN, new ObjectArrayList<>(contentList), ItemRecipeCapability.CAP, true) && RecipeRunnerHelper.handleRecipe(machine, IO.IN, contentList, ItemRecipeCapability.CAP, false);
+        return RecipeRunnerHelper.handleContent(machine, IO.IN, new ObjectArrayList<>(contentList), ItemRecipeCapability.CAP, true) && RecipeRunnerHelper.handleContent(machine, IO.IN, contentList, ItemRecipeCapability.CAP, false);
     }
 
     public static boolean outputItem(IRecipeCapabilityHolder machine, ItemStack... item) {
         List<?> contentList = toIngredient(item);
-        return RecipeRunnerHelper.handleRecipe(machine, IO.OUT, contentList, ItemRecipeCapability.CAP, false);
+        return RecipeRunnerHelper.handleContent(machine, IO.OUT, contentList, ItemRecipeCapability.CAP, false);
     }
 
     public static boolean notConsumableItem(IRecipeCapabilityHolder machine, ItemStack... item) {
         List<?> contentList = toIngredient(item);
-        return RecipeRunnerHelper.handleRecipe(machine, IO.IN, contentList, ItemRecipeCapability.CAP, true);
+        return RecipeRunnerHelper.handleContent(machine, IO.IN, contentList, ItemRecipeCapability.CAP, true);
     }
 
     public static boolean notConsumableCircuit(IRecipeCapabilityHolder machine, int configuration) {
@@ -343,7 +349,7 @@ public final class MachineUtils {
 
     public static boolean inputFluid(IRecipeCapabilityHolder machine, FluidStack... fluid) {
         List<?> contentList = toFluidIngredient(fluid);
-        return RecipeRunnerHelper.handleRecipe(machine, IO.IN, new ObjectArrayList<>(contentList), FluidRecipeCapability.CAP, true) && RecipeRunnerHelper.handleRecipe(machine, IO.IN, contentList, FluidRecipeCapability.CAP, false);
+        return RecipeRunnerHelper.handleContent(machine, IO.IN, new ObjectArrayList<>(contentList), FluidRecipeCapability.CAP, true) && RecipeRunnerHelper.handleContent(machine, IO.IN, contentList, FluidRecipeCapability.CAP, false);
     }
 
     public static boolean outputFluid(IRecipeCapabilityHolder machine, Fluid fluid, int amount) {
@@ -352,6 +358,6 @@ public final class MachineUtils {
 
     public static boolean outputFluid(IRecipeCapabilityHolder machine, FluidStack... fluid) {
         List<?> contentList = toFluidIngredient(fluid);
-        return RecipeRunnerHelper.handleRecipe(machine, IO.OUT, contentList, FluidRecipeCapability.CAP, false);
+        return RecipeRunnerHelper.handleContent(machine, IO.OUT, contentList, FluidRecipeCapability.CAP, false);
     }
 }

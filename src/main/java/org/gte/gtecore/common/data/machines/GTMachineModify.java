@@ -1,5 +1,11 @@
 package org.gte.gtecore.common.data.machines;
 
+import org.gte.gtecore.api.misc.PlanetManagement;
+import org.gte.gtecore.api.recipe.GTERecipeModifierList;
+import org.gte.gtecore.common.data.GTERecipeModifiers;
+import org.gte.gtecore.common.data.GTERecipeTypes;
+import org.gte.gtecore.utils.MachineUtils;
+
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
@@ -11,14 +17,10 @@ import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.gregtechceu.gtceu.common.data.machines.GTMultiMachines;
 import com.gregtechceu.gtceu.utils.memoization.GTMemoizer;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import org.gte.gtecore.api.misc.PlanetManagement;
-import org.gte.gtecore.api.recipe.GTERecipeModifierList;
-import org.gte.gtecore.common.data.GTERecipeModifiers;
-import org.gte.gtecore.common.data.GTERecipeTypes;
-import org.gte.gtecore.utils.MachineUtils;
 
 import java.util.UUID;
 
@@ -41,6 +43,7 @@ public interface GTMachineModify {
         GTMultiMachines.ELECTRIC_BLAST_FURNACE.setRecipeModifier(new GTERecipeModifierList(GTERecipeModifiers::ebfOverclock));
         GTMultiMachines.PYROLYSE_OVEN.setRecipeModifier(new GTERecipeModifierList(GTERecipeModifiers::pyrolyseOvenOverclock));
         GTMultiMachines.CRACKER.setRecipeModifier(new GTERecipeModifierList(GTERecipeModifiers::crackerOverclock));
+        GTMultiMachines.MULTI_SMELTER.setRecipeModifier(new GTERecipeModifierList(GTERecipeModifiers::multiSmelterParallel));
         GTMultiMachines.LARGE_CHEMICAL_REACTOR.setRecipeModifier(GTERecipeModifiers.LARGE_CHEMICAL_OROVERCLOCK);
         GTMultiMachines.IMPLOSION_COMPRESSOR.setRecipeModifier(GTERecipeModifiers.OVERCLOCKING);
         GTMultiMachines.DISTILLATION_TOWER.setRecipeModifier(GTERecipeModifiers.OVERCLOCKING);

@@ -2570,7 +2570,7 @@ interface AssemblyLine {
                 .outputItems(MultiBlockD.NANO_FORGE.asStack())
                 .EUt(491520)
                 .duration(2400)
-                .stationResearch(b -> b.researchStack(RegistriesUtils.getItemStack("gtocore:carbon_nanites"))
+                .stationResearch(b -> b.researchStack(RegistriesUtils.getItemStack("gtecore:carbon_nanites"))
                         .CWUt(64)
                         .EUt(491520))
                 .save();
@@ -2843,7 +2843,7 @@ interface AssemblyLine {
                 .outputItems(GTEBlocks.QUARK_PIPE.asStack())
                 .EUt(7864320)
                 .duration(400)
-                .stationResearch(b -> b.researchStack(RegistriesUtils.getItemStack("gtocore:heavy_quark_degenerate_matter_nonuple_fluid_pipe"))
+                .stationResearch(b -> b.researchStack(RegistriesUtils.getItemStack("gtecore:heavy_quark_degenerate_matter_nonuple_fluid_pipe"))
                         .CWUt(2048)
                         .EUt(31457280))
                 .save();

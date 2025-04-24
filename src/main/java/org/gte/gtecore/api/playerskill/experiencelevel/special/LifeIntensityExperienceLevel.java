@@ -1,11 +1,11 @@
 package org.gte.gtecore.api.playerskill.experiencelevel.special;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import net.minecraft.world.entity.player.Player;
 import org.gte.gtecore.api.playerskill.SkillRegistry;
 import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
 
-import net.minecraft.network.chat.Component;
+import com.gregtechceu.gtceu.api.GTValues;
+
+import net.minecraft.world.entity.player.Player;
 
 public class LifeIntensityExperienceLevel extends BasicExperienceLevel {
 

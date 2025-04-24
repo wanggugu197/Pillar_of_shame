@@ -2,6 +2,7 @@ package org.gte.gtecore.api.data.tag;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 

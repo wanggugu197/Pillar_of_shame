@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "gtecore:item/material_sets/magmatter/rod"
+  }
+}

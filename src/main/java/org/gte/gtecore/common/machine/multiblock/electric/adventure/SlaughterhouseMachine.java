@@ -1,10 +1,10 @@
 package org.gte.gtecore.common.machine.multiblock.electric.adventure;
 
+import org.gte.gtecore.api.item.ItemStackSet;
 import org.gte.gtecore.api.machine.multiblock.StorageMultiblockMachine;
 import org.gte.gtecore.api.machine.trait.CustomRecipeLogic;
 import org.gte.gtecore.api.recipe.GTERecipeBuilder;
 import org.gte.gtecore.api.recipe.RecipeRunnerHelper;
-import org.gte.gtecore.api.item.ItemStackSet;
 import org.gte.gtecore.utils.MachineUtils;
 import org.gte.gtecore.utils.StringUtils;
 

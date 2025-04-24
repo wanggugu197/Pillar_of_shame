@@ -1,5 +1,7 @@
 package org.gte.gtecore.common.forge;
 
+import org.gte.gtecore.config.GTEConfig;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,7 +18,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import org.gte.gtecore.config.GTEConfig;
 
 import java.util.List;
 import java.util.Map;

@@ -1,12 +1,12 @@
 package org.gte.gtecore.common.machine.multiblock.electric;
 
 import org.gte.gtecore.GTECore;
+import org.gte.gtecore.api.item.ItemStackSet;
 import org.gte.gtecore.api.machine.multiblock.ElectricMultiblockMachine;
 import org.gte.gtecore.api.machine.trait.CustomRecipeLogic;
 import org.gte.gtecore.api.recipe.GTERecipeBuilder;
 import org.gte.gtecore.api.recipe.RecipeRunnerHelper;
 import org.gte.gtecore.common.data.GTERecipeModifiers;
-import org.gte.gtecore.api.item.ItemStackSet;
 import org.gte.gtecore.utils.MachineUtils;
 
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;

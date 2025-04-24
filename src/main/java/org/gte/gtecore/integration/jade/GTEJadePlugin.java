@@ -1,18 +1,25 @@
 package org.gte.gtecore.integration.jade;
 
+import org.gte.gtecore.api.blockentity.ManaMachineBlockEntity;
+import org.gte.gtecore.integration.jade.provider.*;
+import org.gte.gtecore.integration.jade.provider.AccelerateBlockProvider;
+import org.gte.gtecore.integration.jade.provider.MEPatternBufferProvider;
+import org.gte.gtecore.integration.jade.provider.MEPatternBufferProxyProvider;
+import org.gte.gtecore.integration.jade.provider.ManaContainerBlockProvider;
+
 import com.gregtechceu.gtceu.api.block.MetaMachineBlock;
 import com.gregtechceu.gtceu.api.blockentity.MetaMachineBlockEntity;
 import com.gregtechceu.gtceu.common.blockentity.FluidPipeBlockEntity;
 import com.gregtechceu.gtceu.common.data.GTMaterialItems;
 import com.gregtechceu.gtceu.integration.jade.provider.*;
-import com.hepdd.gtmthings.integration.jade.provider.WirelessEnergyHatchProvider;
-import com.hepdd.gtmthings.integration.jade.provider.WirelessOpticalComputationHatchProvider;
-import com.tterrag.registrate.util.entry.ItemProviderEntry;
+
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.gte.gtecore.api.blockentity.ManaMachineBlockEntity;
-import org.gte.gtecore.integration.jade.provider.AccelerateBlockProvider;
+
+import com.hepdd.gtmthings.integration.jade.provider.WirelessEnergyHatchProvider;
+import com.hepdd.gtmthings.integration.jade.provider.WirelessOpticalComputationHatchProvider;
+import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import snownee.jade.addon.harvest.HarvestToolProvider;
 import snownee.jade.addon.harvest.SimpleToolHandler;
 import snownee.jade.api.IWailaClientRegistration;

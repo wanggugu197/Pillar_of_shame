@@ -1,9 +1,10 @@
 package org.gte.gtecore.api.playerskill.eventhandler.normal;
 
-import net.minecraft.network.chat.Component;
 import org.gte.gtecore.api.playerskill.event.SkillEvent;
 import org.gte.gtecore.api.playerskill.event.normal.ExperienceAddedEvent;
 import org.gte.gtecore.api.playerskill.eventhandler.SkillEventHandler;
+
+import net.minecraft.network.chat.Component;
 
 public class ExperienceAddedSendMessageHandler extends SkillEventHandler {
 

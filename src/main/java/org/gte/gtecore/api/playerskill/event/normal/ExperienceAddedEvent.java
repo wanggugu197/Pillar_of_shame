@@ -1,8 +1,9 @@
 package org.gte.gtecore.api.playerskill.event.normal;
 
-import net.minecraft.world.entity.player.Player;
 import org.gte.gtecore.api.playerskill.event.SkillEvent;
 import org.gte.gtecore.api.playerskill.experiencelevel.BasicExperienceLevel;
+
+import net.minecraft.world.entity.player.Player;
 
 public class ExperienceAddedEvent extends SkillEvent {
 
