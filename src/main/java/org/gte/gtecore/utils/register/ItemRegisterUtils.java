@@ -1,6 +1,5 @@
 package org.gte.gtecore.utils.register;
 
-import net.minecraft.util.RandomSource;
 import org.gte.gtecore.GTECore;
 import org.gte.gtecore.api.GTEValues;
 import org.gte.gtecore.api.data.chemical.material.GTEMaterial;
@@ -11,6 +10,7 @@ import org.gte.gtecore.api.playerskill.utils.UtilsTintableModel;
 import org.gte.gtecore.common.data.GTECovers;
 import org.gte.gtecore.common.item.*;
 import org.gte.gtecore.common.item.playerskill.MysteriousBoostPotionBehaviour;
+import org.gte.gtecore.common.item.playerskill.SkillUpgradePackageBehavior;
 import org.gte.gtecore.utils.ColorUtils;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -32,6 +32,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -51,7 +52,6 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import org.gte.gtecore.common.item.playerskill.SkillUpgradePackageBehavior;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
